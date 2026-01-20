@@ -1,6 +1,12 @@
 ---
 name: aviz-skills-installer
 description: Install skills from the AVIZ Skills Library. Use when user wants to install a skill, browse available skills, set up Claude Code skills, or asks about skill installation. Triggers on "install skill", "add skill", "setup skill", "available skills", "skill library", "browse skills".
+version: "1.0.0"
+author: aviz85
+tags:
+  - installer
+  - setup
+  - claude-code
 ---
 
 # AVIZ Skills Installer

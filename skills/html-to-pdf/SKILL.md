@@ -1,6 +1,14 @@
 ---
 name: html-to-pdf
 description: Convert HTML to PDF with pixel-perfect rendering and excellent Hebrew/RTL support. Use when the user asks to 'convert HTML to PDF', 'generate PDF from HTML', 'create PDF from webpage', 'export to PDF', or needs PDF generation with Hebrew text support.
+version: "1.0.0"
+author: aviz85
+tags:
+  - pdf
+  - conversion
+  - html
+  - rtl
+  - hebrew
 allowed-tools: Bash, Read, Write, Glob
 ---
 

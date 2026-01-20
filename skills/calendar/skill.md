@@ -1,6 +1,13 @@
 ---
 name: calendar
 description: "Google Calendar integration via Apps Script API. Use when checking schedule, meetings, today's events, weekly calendar, or adding events."
+version: "1.0.0"
+author: aviz85
+tags:
+  - calendar
+  - google
+  - scheduling
+  - productivity
 setup: "./SETUP.md"
 ---
 

@@ -1,6 +1,13 @@
 ---
 name: gh-pages-deploy
-description: Deploy static or interactive frontend content to GitHub Pages using gh CLI. Use when the user wants to publish, share, or make accessible any HTML/CSS/JS content - including demos, prototypes, visualizations, landing pages, portfolios, documentation, interactive tools, games, or any browser-based project. Activate whenever content needs to be publicly viewable via URL, not just when "website" is explicitly mentioned. (user)
+description: Deploy static or interactive frontend content to GitHub Pages using gh CLI. Use when the user wants to publish, share, or make accessible any HTML/CSS/JS content - including demos, prototypes, visualizations, landing pages, portfolios, documentation, interactive tools, games, or any browser-based project. Activate whenever content needs to be publicly viewable via URL, not just when "website" is explicitly mentioned.
+version: "1.0.0"
+author: aviz85
+tags:
+  - deployment
+  - github
+  - hosting
+  - frontend
 ---
 
 # GitHub Pages Deployment

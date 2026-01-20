@@ -1,6 +1,13 @@
 ---
 name: youtube-downloader
 description: "Download YouTube videos with quality presets. Use for: download youtube, yt download, video download, youtube to whatsapp, youtube mp3."
+version: "1.0.0"
+author: aviz85
+tags:
+  - youtube
+  - video
+  - download
+  - media
 ---
 
 # YouTube Video Downloader

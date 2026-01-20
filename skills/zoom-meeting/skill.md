@@ -1,6 +1,13 @@
 ---
 name: zoom-meeting
 description: "Schedule Zoom meetings with calendar invites. Use when scheduling client calls, consultations, or any video meeting. Triggers: 'zoom meeting with...', 'schedule call with...', 'consultation with...'"
+version: "1.0.0"
+author: aviz85
+tags:
+  - zoom
+  - meetings
+  - scheduling
+  - video-calls
 enhancedBy:
   - get-contact: "Auto-lookup contact by name. Without it: ask user for email/phone directly"
   - calendar: "Check conflicts and send invites. Without it: create Zoom only"

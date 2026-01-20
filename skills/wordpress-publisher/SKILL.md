@@ -1,6 +1,13 @@
 ---
 name: wordpress-publisher
 description: "Publish posts to WordPress. Use for: publish blog post, upload to WordPress, פרסם בבלוג."
+version: "1.0.0"
+author: aviz85
+tags:
+  - wordpress
+  - blog
+  - publishing
+  - cms
 ---
 
 # WordPress Publisher

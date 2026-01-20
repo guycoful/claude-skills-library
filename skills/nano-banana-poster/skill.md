@@ -1,6 +1,14 @@
 ---
 name: nano-banana-poster
 description: "Generate images and posters with Google Gemini. Use for: create image, generate visual, AI image generation, marketing poster."
+version: "1.0.0"
+author: aviz85
+tags:
+  - image-generation
+  - ai
+  - gemini
+  - poster
+  - visual
 setup: "./SETUP.md"
 ---
 

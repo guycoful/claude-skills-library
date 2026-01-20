@@ -1,6 +1,12 @@
 ---
 name: get-contact
 description: "Find contact details by name. Searches local contacts/CRM and returns email/phone. Use before scheduling meetings or sending messages when you need contact info."
+version: "1.0.0"
+author: aviz85
+tags:
+  - contacts
+  - crm
+  - utility
 usedBy:
   - zoom-meeting
   - whatsapp

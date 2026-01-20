@@ -1,6 +1,12 @@
 ---
 name: whatsapp
 description: "WhatsApp automation using Green API. Send messages, voice notes, images, and get group members."
+version: "1.0.0"
+author: aviz85
+tags:
+  - whatsapp
+  - messaging
+  - automation
 enhancedBy:
   - get-contact: "Auto-lookup contact by name. Without it: ask user for phone directly"
   - speech-generator: "Generate voice audio with TTS. Without it: send existing audio files only"

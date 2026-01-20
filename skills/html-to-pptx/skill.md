@@ -1,6 +1,16 @@
 ---
 name: html-to-pptx
 description: "Convert HTML to PowerPoint (PPTX) with excellent Hebrew/RTL support. Use when the user asks to 'convert HTML to PowerPoint', 'create presentation from HTML', 'generate PPTX', 'make slides from HTML', or needs to create PowerPoint presentations programmatically."
+version: "1.0.0"
+author: aviz85
+tags:
+  - powerpoint
+  - pptx
+  - conversion
+  - html
+  - rtl
+  - hebrew
+  - presentations
 ---
 
 # HTML to PowerPoint Converter
