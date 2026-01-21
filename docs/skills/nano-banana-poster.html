@@ -322,7 +322,7 @@
 
       <div class="pricing-note">
         <h3>💰 כמה זה עולה?</h3>
-        <p><strong>בתשלום לפי שימוש.</strong> צריך לחבר את ה-API לפרויקט ב-Google Cloud עם אמצעי תשלום (Billing). אפשר ליצור את המפתח דרך AI Studio, אבל משלמים על כל שימוש.</p>
+        <p><strong>בתשלום לפי שימוש.</strong> בעת יצירת מפתח API ב-AI Studio, צריך לחבר את הפרויקט לחשבון Billing עם כרטיס אשראי. המדריך למטה מסביר בדיוק איך לעשות את זה.</p>
       </div>
     </div>
 
@@ -352,6 +352,21 @@
         <li>
           <strong>בחרו פרויקט</strong>
           <p>אם יש לכם כבר פרויקט - בחרו אותו. אם לא - לחצו על <span class="highlight">Create API key in new project</span>.</p>
+        </li>
+
+        <li>
+          <strong>הגדרת Billing (חיוב)</strong>
+          <p>ה-API של Gemini דורש חיבור לחשבון בתשלום. אם יצרתם פרויקט חדש, תראו בטבלה קישור בכחול: <span class="highlight">Set up billing</span>.</p>
+          <ol style="margin-top: 12px; padding-inline-start: 20px; color: var(--text-secondary);">
+            <li style="margin-bottom: 8px;">לחצו על <span class="highlight">Set up billing</span> - ייפתח Google Cloud Console</li>
+            <li style="margin-bottom: 8px;">לחצו על <span class="highlight">Create account</span> ליצירת חשבון חיוב חדש</li>
+            <li style="margin-bottom: 8px;">הזינו פרטי אשראי ואשרו</li>
+            <li>החשבון יקושר אוטומטית לפרויקט שיצרתם</li>
+          </ol>
+          <div class="info" style="margin-top: 12px;">
+            <span class="warning-icon">💡</span>
+            <p>אם יש לכם כבר חשבון Billing ב-Google Cloud, תוכלו פשוט לבחור אותו מהרשימה במקום ליצור חדש.</p>
+          </div>
         </li>
 
         <li>
