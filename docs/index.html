@@ -966,14 +966,27 @@
           </div>
         </div>
 
-        <!-- Manual Install -->
+        <!-- ZIP Download Install -->
         <div class="step-card reveal">
-          <div class="step-number" style="background: linear-gradient(135deg, #64748b, #475569);">⚙️</div>
-          <h3>התקנה ידנית</h3>
-          <p>מעדיפים לעשות הכל בעצמכם? גללו למטה למדריך המלא.</p>
-          <a href="#install" class="btn btn-secondary" style="margin-top: 12px; padding: 12px 24px;">
-            📖 למדריך הידני
-          </a>
+          <div class="step-number" style="background: linear-gradient(135deg, #64748b, #475569);">⬇️</div>
+          <h3>התקנה מהורדת ZIP</h3>
+          <p>הורדתם ZIP של סקיל בודד? ככה מתקינים:</p>
+          <div style="margin-top: 16px; font-size: 0.85rem; color: var(--text-secondary); text-align: right;">
+            <ol style="padding-right: 20px; margin: 0; line-height: 2;">
+              <li>פתחו את ה-ZIP - תקבלו תיקייה בשם הסקיל</li>
+              <li>העתיקו את התיקייה ל:
+                <div class="step-code" style="margin: 8px 0; font-size: 0.75rem;">~/.claude/skills/</div>
+                <span style="color: var(--text-muted);">או לפרויקט ספציפי:</span>
+                <div class="step-code" style="margin: 8px 0; font-size: 0.75rem;">PROJECT/.claude/skills/</div>
+              </li>
+              <li>פתחו Claude Code והריצו <code style="font-size: 0.8rem;">/skills</code></li>
+              <li>וודאו שהסקיל מופיע ברשימה ✓</li>
+            </ol>
+            <div class="info" style="margin-top: 12px; padding: 10px; font-size: 0.8rem;">
+              <span>💡</span>
+              <p style="margin: 0;">המבנה הנכון: <code>.claude/skills/whatsapp/SKILL.md</code></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
