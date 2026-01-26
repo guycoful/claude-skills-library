@@ -15,6 +15,8 @@ A collection of useful skills for Claude Code by aviz.
 | **supabase-helper** | Supabase development helper |
 | **calendar** | Google Calendar integration |
 | **skill-creator** | Guide for creating new skills |
+| **tutorial-creator** | Create professional tutorials from screen recordings - with narration, music, subtitles |
+| **tutorial-narration-writer** | Write narration scripts in a casual, friendly style for video tutorials |
 
 ## Installation
 
@@ -43,6 +45,8 @@ Some skills require additional setup:
 - **nano-banana-poster**: Gemini API key
 - **html-to-pdf**: Run `npm install` in the skill's scripts folder
 - **calendar**: Google Apps Script deployment (included)
+- **tutorial-creator**: Requires speech-generator, transcribe, music-generator, youtube-uploader skills
+- **tutorial-narration-writer**: No additional setup needed (text-only skill)
 
 ## License
 
