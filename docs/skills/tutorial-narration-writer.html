@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial Narration Writer Skill - מדריך התקנה מפורט</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-primary: #22C55E;
+      --green-glow: rgba(34, 197, 94, 0.4);
+      --green-soft: rgba(34, 197, 94, 0.1);
+      --bg-darkest: #0a0f0d;
+      --bg-dark: #111827;
+      --bg-card: #1a2332;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(34, 197, 94, 0.3);
+      --yellow: #fbbf24;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg-darkest);
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--green-primary); }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .skill-icon { font-size: 4rem; margin-bottom: 16px; }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+    }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--green-soft);
+      border-radius: 100px;
+      color: var(--green-primary);
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2 .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--green-primary);
+      border-radius: 50%;
+      font-size: 1rem;
+    }
+
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--green-primary);
+    }
+
+    p { color: var(--text-secondary); margin-bottom: 16px; }
+
+    .highlight {
+      background: var(--green-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--green-primary);
+      font-weight: 500;
+    }
+
+    .warning {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .warning-icon { font-size: 1.5rem; }
+    .warning p { margin: 0; color: var(--yellow); }
+
+    .info {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .info p { margin: 0; color: var(--blue); }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps-list > li {
+      position: relative;
+      padding: 16px 0;
+      padding-inline-start: 48px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .steps-list > li:last-child { border-bottom: none; }
+
+    .steps-list > li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      inset-inline-start: 0;
+      top: 16px;
+      width: 28px;
+      height: 28px;
+      background: var(--bg-dark);
+      border: 2px solid var(--green-primary);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--green-primary);
+    }
+
+    code {
+      background: var(--bg-dark);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'Menlo', monospace;
+      font-size: 0.9rem;
+      color: var(--green-primary);
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .code-block {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .code-block.ltr {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .code-block code {
+      background: none;
+      padding: 0;
+      display: block;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: #6b7280; }
+    .code-block .key { color: var(--yellow); }
+    .code-block .value { color: var(--green-primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-primary) 0%, #16a34a 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--green-glow);
+    }
+
+    .btn-download {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-download:hover {
+      background: var(--green-soft);
+      color: var(--green-primary);
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .style-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .style-item {
+      background: var(--bg-dark);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .style-item.do {
+      border-color: var(--green-primary);
+      background: rgba(34, 197, 94, 0.05);
+    }
+
+    .style-item.dont {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.05);
+    }
+
+    .style-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .style-item.do .style-title { color: var(--green-primary); }
+    .style-item.dont .style-title { color: #ef4444; }
+
+    .style-examples {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .example-box {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-glow);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    .example-label {
+      color: var(--green-primary);
+      font-weight: 600;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .example-text {
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.75rem; }
+      .section { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html#skills" class="back-link">→ חזרה לעמוד הראשי</a>
+
+    <div class="hero">
+      <div class="skill-icon">✍️</div>
+      <h1>Tutorial Narration Writer</h1>
+      <p class="subtitle">כתבו תסריטים לקריינות בסגנון אישי ומקצועי</p>
+      <div class="difficulty">✅ קל - ללא תלויות חיצוניות</div>
+    </div>
+
+    <!-- Overview -->
+    <div class="section">
+      <h2><span class="num">📋</span> סקירה כללית</h2>
+      <p>
+        הסקיל הזה הוא <span class="highlight">מדריך סגנון</span> שמלמד את קלוד איך לכתוב תסריטים לטוטוריאלים בסגנון ייחודי - כזה שנשמע כמו לספר לחבר על משהו מגניב שגילית.
+      </p>
+
+      <p>
+        במקום טקסט יבש ורשמי, הסקיל מייצר קריינות שפותחת עם "חברים", משתמשת באנלוגיות להסבר טכני, ונסגרת עם "וזה עובד".
+      </p>
+
+      <div class="info">
+        <span class="warning-icon">💡</span>
+        <p>סקיל זה משמש כתלות של <code>tutorial-creator</code>, אבל אפשר להשתמש בו גם בנפרד לכתיבת תסריטים.</p>
+      </div>
+    </div>
+
+    <!-- Style Guide -->
+    <div class="section">
+      <h2><span class="num">🎨</span> מדריך הסגנון</h2>
+
+      <h3>עקרונות יסוד</h3>
+      <ul class="steps-list">
+        <li><strong>פתיחה עם "חברים"</strong> - פנייה ישירה וחמה</li>
+        <li><strong>קז'ואל אבל לא מרושל</strong> - כמו לספר לחבר על משהו מגניב</li>
+        <li><strong>התלהבות מרוסנת</strong> - "סופר מגניב", "די מדהים" (לא "וואו מטורף!!!")</li>
+        <li><strong>הסברים עם אנלוגיות</strong> - "תחשבו על זה כמו..."</li>
+        <li><strong>הצבעה על המסך</strong> - "הנה", "כאן", "כמו שרואים"</li>
+        <li><strong>סיום עם הוכחה</strong> - "וזה עובד", "ואכן זה קורה"</li>
+      </ul>
+
+      <h3>מילים ומבנים אופייניים</h3>
+      <div class="style-grid">
+        <div class="style-item do">
+          <div class="style-title">✅ כן להשתמש</div>
+          <div class="style-examples">
+            "חברים, תראו קטע..."<br>
+            "אז" (לא "לכן")<br>
+            "בעצם" (לא "למעשה")<br>
+            "סופר מגניב"<br>
+            "די מדהים"<br>
+            "בונוס!"<br>
+            "וזה עובד"
+          </div>
+        </div>
+        <div class="style-item dont">
+          <div class="style-title">❌ להימנע</div>
+          <div class="style-examples">
+            "הנני מציג"<br>
+            "ברצוני להראות"<br>
+            "מטורף!"<br>
+            "הכי טוב בעולם!"<br>
+            "בהחלט", "ללא ספק"<br>
+            "היי מה קורה"<br>
+            "סו", "בייסיקלי"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example -->
+    <div class="section">
+      <h2><span class="num">📝</span> דוגמה מלאה</h2>
+
+      <h3>קלט: ניתוח וידאו</h3>
+      <div class="code-block ltr">
+<code>00:03 - Creating 5 tasks
+00:07 - Kanban board updates
+00:13 - Switching to different project
+00:18 - Injecting task from project B</code>
+      </div>
+
+      <h3>פלט: תסריט קריינות</h3>
+      <div class="example-box">
+        <div class="example-label">📢 טקסט מוכן לקריינות:</div>
+        <div class="example-text">
+          חברים, תראו קטע סופר מגניב שעובד עם קלוד קוד. אז שבוע שעבר קלוד קוד הכניסו ניהול משימות גלובלי. זה אומר שחוץ ממה שאתם רואים כאן, שיש לוח קנבן יפה כזה, כמו שרואים כאן של המשימות, בעצם יש תיקייה בתיקיית המשתמש ששם כל המשימות של כל הפרויקטים נמצאות.
+          <br><br>
+          מה שאומר חברים, שאני יכול לפתוח פרויקט אחר לגמרי ולבקש להזריק משימות לפרויקט אחר. תחשבו על זה כמו מנהל שמניח משימות נוספות לעובד אחר תוך כדי עבודה, שזה די מדהים.
+          <br><br>
+          הנה הניסוי הזה מראה איך זה קורה. כאן יצרתי חמש משימות בפרויקט אחד ואז הלכתי לפרויקט אחר וביקשתי ממנו להתחבר עם הפרויקט הראשון ולהוסיף לו עוד משימה, וזה עובד.
+          <br><br>
+          בונוס! שלחתי הערה לפרויקט מתוך הלוח קנבן ואכן הוא ביצע לפי ההערה. וזה עובד.
+        </div>
+      </div>
+
+      <h3>מבנה טיפוסי</h3>
+      <div class="code-block">
+<code>1. פתיחה חמה (חברים + hook)
+   └── "חברים, תראו קטע סופר מגניב..."
+
+2. הקשר (מה ומתי)
+   └── "אז שבוע שעבר הכניסו..."
+
+3. הסבר טכני עם אנלוגיה
+   └── "זה אומר ש... תחשבו על זה כמו..."
+
+4. דמו עם הצבעה
+   └── "הנה... כאן... כמו שרואים..."
+
+5. סיום / הוכחה
+   └── "וזה עובד" / "בונוס!"</code>
+      </div>
+    </div>
+
+    <!-- Installation -->
+    <div class="section">
+      <h2><span class="num">1</span> התקנה</h2>
+
+      <div class="code-block ltr">
+<code><span class="comment"># יצירת תיקיית הסקיל</span>
+mkdir -p ~/.claude/skills/tutorial-narration-writer
+
+<span class="comment"># חילוץ הקובץ שהורדתם</span>
+unzip tutorial-narration-writer.zip -d ~/.claude/skills/tutorial-narration-writer</code>
+      </div>
+
+      <h3>מבנה הסקיל</h3>
+      <div class="code-block ltr">
+<code>~/.claude/skills/tutorial-narration-writer/
+├── SKILL.md              <span class="comment"># הנחיות הסקיל</span>
+└── examples/
+    └── claude-code-tasks.md  <span class="comment"># דוגמה מלאה</span></code>
+      </div>
+
+      <div class="info">
+        <span class="warning-icon">✅</span>
+        <p>אין צורך בהגדרות נוספות! הסקיל הזה הוא מדריך סגנון בלבד, ללא API או תלויות.</p>
+      </div>
+    </div>
+
+    <!-- Usage -->
+    <div class="section">
+      <h2><span class="num">2</span> שימוש</h2>
+
+      <h3>שימוש עצמאי</h3>
+      <div class="code-block">
+<code>"כתוב לי תסריט קריינות לטוטוריאל על פיצ'ר X"
+
+"יש לי ניתוח וידאו עם טיימקודים, תכתוב ממנו קריינות בסגנון שלי"</code>
+      </div>
+
+      <h3>כחלק מ-tutorial-creator</h3>
+      <p>כשמשתמשים בסקיל <code>tutorial-creator</code>, הסקיל הזה מופעל אוטומטית בשלב כתיבת התסריט.</p>
+
+      <h3>אורכים מומלצים</h3>
+      <table style="width: 100%; margin-top: 12px; color: var(--text-secondary);">
+        <tr><td>30-45 שניות וידאו</td><td style="text-align: left;">600-750 תווים</td></tr>
+        <tr><td>60-90 שניות וידאו</td><td style="text-align: left;">1000-1300 תווים</td></tr>
+        <tr><td>2-3 דקות וידאו</td><td style="text-align: left;">1800-2200 תווים</td></tr>
+      </table>
+      <p style="margin-top: 12px; font-size: 0.9rem;"><strong>כלל אצבע:</strong> ~15 תווים לשנייה (כולל רווחים)</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="section" style="text-align: center;">
+      <h2>🚀 מוכנים להתחיל?</h2>
+      <p>הורידו את הסקיל והתחילו לכתוב תסריטים בסגנון אישי!</p>
+      <div class="cta-buttons" style="justify-content: center;">
+        <button class="btn btn-primary" onclick="downloadSkill()">⬇️ הורדת הסקיל</button>
+        <a href="../index.html#skills" class="btn btn-download">→ חזרה לכל הסקילים</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function downloadSkill() {
+      window.location.href = '../downloads/tutorial-narration-writer.zip';
+    }
+  </script>
+</body>
+</html>
