@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claudability Analyzer - מנתח קלודביליות</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-primary: #22C55E;
+      --green-glow: rgba(34, 197, 94, 0.4);
+      --green-soft: rgba(34, 197, 94, 0.1);
+      --bg-darkest: #0a0f0d;
+      --bg-dark: #111827;
+      --bg-card: #1a2332;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(34, 197, 94, 0.3);
+      --yellow: #fbbf24;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg-darkest);
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--green-primary); }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .skill-icon { font-size: 4rem; margin-bottom: 16px; }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+    }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--green-soft);
+      border-radius: 100px;
+      color: var(--green-primary);
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2 .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--green-primary);
+      border-radius: 50%;
+      font-size: 1rem;
+    }
+
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--green-primary);
+    }
+
+    p { color: var(--text-secondary); margin-bottom: 16px; }
+
+    .highlight {
+      background: var(--green-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--green-primary);
+      font-weight: 500;
+    }
+
+    .success {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .success-icon { font-size: 1.5rem; }
+    .success p { margin: 0; color: var(--green-primary); }
+
+    .info {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .info-icon { font-size: 1.5rem; }
+    .info p { margin: 0; color: var(--blue); }
+
+    pre {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+      margin: 16px 0;
+      direction: ltr;
+      text-align: left;
+    }
+
+    code {
+      font-family: 'Fira Code', 'Monaco', monospace;
+      font-size: 0.9rem;
+      color: var(--green-primary);
+    }
+
+    .example-list {
+      list-style: none;
+      margin: 16px 0;
+    }
+
+    .example-list li {
+      padding: 12px 16px;
+      background: var(--bg-dark);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+    }
+
+    .example-list li strong {
+      color: var(--text-primary);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: var(--green-primary);
+      color: var(--bg-darkest);
+      text-decoration: none;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      margin-top: 24px;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--green-glow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    th {
+      background: var(--bg-dark);
+      color: var(--green-primary);
+      font-weight: 600;
+    }
+
+    td {
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">→ חזרה לספרייה</a>
+
+    <div class="hero">
+      <div class="skill-icon">🎯</div>
+      <h1>מנתח קלודביליות</h1>
+      <p class="subtitle">ספר לקלוד מה אתה עושה - הוא יגיד לך איך הוא יכול לעזור</p>
+      <div class="difficulty">✨ ללא התקנה מיוחדת - פשוט להוריד ולהשתמש</div>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">1</span> מה זה עושה?</h2>
+      <p>
+        הרבה אנשים שומעים על Claude Code ומתלהבים, אבל לא בטוחים <span class="highlight">איפה זה נוגע להם</span>.
+        "אני לא מתכנת", "אני לא מעביר סדנאות", "זה לא בשבילי"...
+      </p>
+      <p>
+        הסקיל הזה פותר את הבעיה: אתה מספר מה אתה עושה ביום-יום,
+        וקלוד מפרט בדיוק איך הוא יכול לעזור לך - עם דוגמאות מעשיות,
+        מבני תיקיות, וסיפורי "יום בחיים" שמראים איך זה עובד בפועל.
+      </p>
+
+      <div class="success">
+        <span class="success-icon">✅</span>
+        <p><strong>מושלם ל:</strong> כל מי שמרגיש שקלוד קוד "לא בשבילו" ורוצה לגלות את הפוטנציאל</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">2</span> התקנה</h2>
+
+      <h3>אפשרות א׳ - הורדה ידנית</h3>
+      <p>הורידו את קובץ ה-ZIP והעתיקו לתיקייה:</p>
+      <pre><code>~/.claude/skills/claudability-analyzer/</code></pre>
+
+      <a href="../downloads/claudability-analyzer.zip" class="download-btn">⬇️ הורדת הסקיל</a>
+
+      <h3>אפשרות ב׳ - התקנה עם מתקין הסקילים</h3>
+      <p>אם יש לכם את <span class="highlight">aviz-skills-installer</span>:</p>
+      <pre><code>בקש מקלוד: "תתקין לי את claudability-analyzer"</code></pre>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">3</span> איך משתמשים?</h2>
+
+      <h3>שיטה 1: הפעלה ישירה</h3>
+      <pre><code>/claudability-analyzer "אני רואה חשבון עם 50 לקוחות קטנים, מכין דוחות, עוקב אחרי תשלומים..."</code></pre>
+
+      <h3>שיטה 2: שיחה רגילה</h3>
+      <p>פשוט תספר לקלוד מה אתה עושה והוא יפעיל את הסקיל אוטומטית:</p>
+      <pre><code>אני מלמד פסנתר ל-20 תלמידים פרטיים. אני צריך לעקוב אחרי ההתקדמות שלהם,
+לתכנן שיעורים, לתקשר עם הורים, ולנהל תשלומים. איך קלוד קוד יכול לעזור לי?</code></pre>
+
+      <div class="info">
+        <span class="info-icon">💡</span>
+        <p>ככל שתתאר יותר פרטים על העבודה שלך, התוצאה תהיה יותר מדויקת ומועילה</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">4</span> מה תקבלו?</h2>
+
+      <p>הסקיל מייצר ניתוח מפורט שכולל:</p>
+
+      <table>
+        <tr>
+          <th>רכיב</th>
+          <th>מה זה</th>
+        </tr>
+        <tr>
+          <td><strong>טבלת יוזקייסים</strong></td>
+          <td>רשימה ממוקדת של הזדמנויות + ציון "קלודביליות" + חיסכון זמן משוער</td>
+        </tr>
+        <tr>
+          <td><strong>מבנה תיקיות</strong></td>
+          <td>איך לארגן את הקבצים כדי שקלוד יוכל לעבוד לבד</td>
+        </tr>
+        <tr>
+          <td><strong>סטאק טכני</strong></td>
+          <td>אילו סקילים, APIs וכלים צריך</td>
+        </tr>
+        <tr>
+          <td><strong>סיפור "יום בחיים"</strong></td>
+          <td>לפני/אחרי - איך היום שלך משתנה עם קלוד קוד</td>
+        </tr>
+        <tr>
+          <td><strong>צעד ראשון</strong></td>
+          <td>מה לעשות עכשיו כדי להתחיל</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">5</span> דוגמאות לתחומים</h2>
+
+      <ul class="example-list">
+        <li>🎓 <strong>מורים</strong> - בדיקת מבחנים, דפי עבודה, מעקב תלמידים</li>
+        <li>🏠 <strong>סוכני נדל"ן</strong> - תיאורי נכסים, תיאום סיורים, דוחות שוק</li>
+        <li>🎸 <strong>מורים פרטיים</strong> - תוכניות שיעור, מעקב התקדמות, תקשורת עם הורים</li>
+        <li>📚 <strong>עורכי ספרים</strong> - ארגון כתבי יד, בדיקת עקביות, ניהול לקוחות</li>
+        <li>🏋️ <strong>מאמני כושר</strong> - תוכניות אימון, מעקב לקוחות, תוכן לרשתות</li>
+        <li>🎙️ <strong>פודקאסטרים</strong> - תכנון פרקים, תיאום אורחים, קידום</li>
+        <li>📦 <strong>מוכרים באונליין</strong> - עיבוד הזמנות, שירות לקוחות, מלאי</li>
+        <li>👰 <strong>מארגני אירועים</strong> - ניהול ספקים, לו"זים, תקציבים</li>
+        <li>🏠 <strong>הורים</strong> - לוח משפחתי, תקשורת בית ספר, מטלות</li>
+        <li>✈️ <strong>מתכנני טיולים</strong> - מחקר יעדים, בניית לו"ז, מעקב הזמנות</li>
+      </ul>
+
+      <p>ועוד הרבה - הסקיל מותאם לכל תחום עיסוק!</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">6</span> 6 העדשות לקלודביליות</h2>
+
+      <p>הסקיל מנתח את העבודה שלך דרך 6 עדשות:</p>
+
+      <table>
+        <tr>
+          <th>עדשה</th>
+          <th>מה מחפשים</th>
+        </tr>
+        <tr>
+          <td>🔀 <strong>מורכבות</strong></td>
+          <td>הרבה חלקים נעים? קשה לעקוב?</td>
+        </tr>
+        <tr>
+          <td>⏳ <strong>רציפות</strong></td>
+          <td>קורה לאורך זמן? צריך מעקב?</td>
+        </tr>
+        <tr>
+          <td>🔄 <strong>דפוסים</strong></td>
+          <td>חוזר על עצמו? יש כללים סמויים?</td>
+        </tr>
+        <tr>
+          <td>🔗 <strong>אינטגרציה</strong></td>
+          <td>מידע מפוזר? סיילוס לחבר?</td>
+        </tr>
+        <tr>
+          <td>⚖️ <strong>החלטות</strong></td>
+          <td>צריך לשקול אפשרויות? מחקר?</td>
+        </tr>
+        <tr>
+          <td>⚡ <strong>פעולות</strong></td>
+          <td>אפשר לבצע? מייצר תוצר?</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section" style="text-align: center; background: linear-gradient(135deg, var(--green-soft), var(--bg-card));">
+      <h2 style="justify-content: center;">מוכנים לגלות איך קלוד קוד יכול לעזור לכם?</h2>
+      <p>הורידו את הסקיל וספרו לקלוד מה אתם עושים!</p>
+      <a href="../downloads/claudability-analyzer.zip" class="download-btn">⬇️ הורדת הסקיל</a>
+    </div>
+  </div>
+</body>
+</html>
