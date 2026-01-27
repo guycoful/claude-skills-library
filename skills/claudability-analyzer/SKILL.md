@@ -4,6 +4,7 @@ description: "Analyzes a user's profession, job, or daily tasks and breaks them 
 disable-model-invocation: false
 user-invocable: true
 argument-hint: "[profession or task description]"
+allowed-tools: WebSearch, WebFetch, Read, Grep, Glob
 ---
 
 # Claudability Analyzer
@@ -77,7 +78,7 @@ project-name/
 └── output/             # Generated results
 ```
 
-**Tech Stack:**
+**Tech Stack:** (VERIFY WITH WEB SEARCH!)
 - Skills: [what custom skills]
 - APIs/MCP: [WhatsApp, email, calendar, etc.]
 - Libraries: [PDF generation, data processing, etc.]
@@ -180,6 +181,47 @@ Always structure your analysis as:
 [Specific action to take right now]
 ```
 
+## CRITICAL: Research Before Recommending
+
+**Before suggesting any API, MCP server, or library - ALWAYS do web research!**
+
+### Research Requirements
+
+When recommending tech stack, you MUST:
+
+1. **Search for current solutions:**
+   - Use WebSearch to find "best [X] API 2026" or "[task] automation tools"
+   - Check if recommended APIs/services still exist and are active
+   - Look for MCP servers that might exist for the use case
+
+2. **Verify specific tools:**
+   - Search for the exact API/library you want to recommend
+   - Check pricing, availability, and current status
+   - Look for alternatives if the primary choice has issues
+
+3. **Find MCP servers:**
+   - Search "MCP server [service name]" (e.g., "MCP server Google Calendar")
+   - Check https://github.com/topics/mcp-server for available servers
+   - Look for integration options
+
+4. **Include in output:**
+   ```
+   **Tech Stack:** (Verified via web research)
+   - APIs: [Name] - [current status, pricing tier]
+   - MCP: [Server name] - [GitHub link if available]
+   - Libraries: [Name] - [npm/pip package, last updated]
+   ```
+
+### Example Research Flow
+
+For a "send WhatsApp messages" use case:
+1. Search: "WhatsApp API for automation 2026"
+2. Search: "MCP server WhatsApp"
+3. Search: "WhatsApp Business API alternatives"
+4. Result: Recommend Green API / WAHA with specific setup notes
+
+**DO NOT recommend tools based on memory alone. Always verify they exist and work.**
+
 ## Key Principles
 
 1. **Think like their assistant** - What would a capable human assistant do?
@@ -193,6 +235,8 @@ Always structure your analysis as:
 5. **Be specific** - Not "automate emails" but "scan inbox at 9am, flag urgent, draft responses to routine queries."
 
 6. **Respect the bottleneck rule** - If one step requires human judgment, design around it.
+
+7. **Research before recommending** - Never suggest APIs or tools without verifying they exist and work.
 
 ## References
 
