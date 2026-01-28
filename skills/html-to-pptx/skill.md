@@ -11,9 +11,13 @@ tags:
   - rtl
   - hebrew
   - presentations
+setup_complete: false
+setup: "./SETUP.md"
 ---
 
 # HTML to PowerPoint Converter
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Convert HTML to PowerPoint (.pptx) with excellent Hebrew/RTL support using PptxGenJS.
 

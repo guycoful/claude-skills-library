@@ -13,9 +13,12 @@ enhancedBy:
   - calendar: "Check conflicts and send invites. Without it: create Zoom only"
   - whatsapp: "Notify contact to check email. Without it: skip notification"
 setup: "./SETUP.md"
+setup_complete: false
 ---
 
 # Zoom Meeting Scheduler
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Schedule Zoom meetings and send calendar invites automatically.
 

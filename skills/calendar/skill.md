@@ -9,9 +9,12 @@ tags:
   - scheduling
   - productivity
 setup: "./SETUP.md"
+setup_complete: false
 ---
 
 # Google Calendar Integration
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Check and manage calendar events via Google Apps Script API.
 

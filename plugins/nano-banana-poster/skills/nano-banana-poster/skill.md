@@ -10,9 +10,12 @@ tags:
   - poster
   - visual
 setup: "./SETUP.md"
+setup_complete: false
 ---
 
 # Nano Banana Poster Generator
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Generate images using Google's Gemini model with optional reference assets.
 

@@ -10,9 +10,12 @@ tags:
   - elevenlabs
   - voice
 setup: "./SETUP.md"
+setup_complete: false
 ---
 
 # Speech Generator
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Generate speech audio using ElevenLabs TTS.
 

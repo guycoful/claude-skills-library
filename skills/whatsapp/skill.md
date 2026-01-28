@@ -11,9 +11,12 @@ enhancedBy:
   - get-contact: "Auto-lookup contact by name. Without it: ask user for phone directly"
   - speech-generator: "Generate voice audio with TTS. Without it: send existing audio files only"
 setup: "./SETUP.md"
+setup_complete: false
 ---
 
 # WhatsApp Automation (Green API)
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Send messages and get group information via WhatsApp.
 

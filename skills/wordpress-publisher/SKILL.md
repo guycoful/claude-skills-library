@@ -8,9 +8,13 @@ tags:
   - blog
   - publishing
   - cms
+setup_complete: false
+setup: "./SETUP.md"
 ---
 
 # WordPress Publisher
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Publish content to WordPress with a two-step flow: draft first, then publish after user confirmation.
 

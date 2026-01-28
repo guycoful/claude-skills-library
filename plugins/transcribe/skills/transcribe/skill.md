@@ -1,9 +1,13 @@
 ---
 name: transcribe
 description: "Transcribe audio/video to SRT subtitles using ElevenLabs Scribe v2. Use for: transcription, subtitles, captions, SRT generation."
+setup_complete: false
+setup: "./SETUP.md"
 ---
 
 # Transcribe
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Generate SRT subtitle files from audio/video using ElevenLabs Scribe v2.
 

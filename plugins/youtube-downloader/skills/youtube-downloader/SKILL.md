@@ -8,9 +8,13 @@ tags:
   - video
   - download
   - media
+setup: "./SETUP.md"
+setup_complete: false
 ---
 
 # YouTube Video Downloader
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Download YouTube videos with quality control, optimized for sharing on WhatsApp and other platforms.
 

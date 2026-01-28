@@ -10,9 +10,13 @@ tags:
   - rtl
   - hebrew
 allowed-tools: Bash, Read, Write, Glob
+setup_complete: false
+setup: "./SETUP.md"
 ---
 
 # HTML to PDF Converter
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Pixel-perfect HTML to PDF conversion using Puppeteer (Chrome headless). Provides excellent support for Hebrew, Arabic, and other RTL languages with automatic direction detection.
 

@@ -1,9 +1,13 @@
 ---
 name: youtube-uploader
 description: "Upload videos to YouTube with title, description, tags. Use for: youtube upload, publish video, share on youtube."
+setup_complete: false
+setup: "./SETUP.md"
 ---
 
 # YouTube Uploader
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Upload videos to YouTube with full metadata control.
 

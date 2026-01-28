@@ -1,9 +1,13 @@
 ---
 name: music-generator
 description: "Generate AI music with ElevenLabs Music API. Use for: background music, soundtracks, jingles, theme songs, instrumental tracks, AI music composition."
+setup_complete: false
+setup: "./SETUP.md"
 ---
 
 # Music Generator
+
+> **First time?** If `setup_complete: false` above, run `./SETUP.md` first, then set `setup_complete: true`.
 
 Generate custom AI music using ElevenLabs Music API with detailed composition control.
 
