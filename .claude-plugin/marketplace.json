@@ -8,14 +8,122 @@
     {
       "name": "aviz-skills-installer",
       "source": "./plugin",
-      "description": "Install and manage skills from the AVIZ Skills Library - WhatsApp, Speech Generator, Image Generator, and more",
-      "version": "1.0.0",
-      "author": {
-        "name": "aviz",
-        "url": "https://github.com/aviz85"
-      },
-      "homepage": "https://aviz.github.io/claude-skills-library/",
-      "license": "MIT"
+      "description": "Install and manage skills from the AVIZ Skills Library",
+      "version": "1.0.0"
+    },
+    {
+      "name": "calendar",
+      "source": "./plugins/calendar",
+      "description": "Google Calendar integration via Apps Script API. Use when checking schedule, meetings, today's events, weekly calendar, ",
+      "version": "1.0.0"
+    },
+    {
+      "name": "claudability-analyzer",
+      "source": "./plugins/claudability-analyzer",
+      "description": "Analyzes a user's profession, job, or daily tasks and breaks them down into specific Claude Code use cases. Use when som",
+      "version": "1.0.0"
+    },
+    {
+      "name": "get-contact",
+      "source": "./plugins/get-contact",
+      "description": "Find contact details by name. Searches local contacts/CRM and returns email/phone. Use before scheduling meetings or sen",
+      "version": "1.0.0"
+    },
+    {
+      "name": "gh-pages-deploy",
+      "source": "./plugins/gh-pages-deploy",
+      "description": "description: Deploy static or interactive frontend content to GitHub Pages using gh CLI. Use when the user wants to publ",
+      "version": "1.0.0"
+    },
+    {
+      "name": "html-to-pdf",
+      "source": "./plugins/html-to-pdf",
+      "description": "description: Convert HTML to PDF with pixel-perfect rendering and excellent Hebrew/RTL support. Use when the user asks t",
+      "version": "1.0.0"
+    },
+    {
+      "name": "html-to-pptx",
+      "source": "./plugins/html-to-pptx",
+      "description": "Convert HTML to PowerPoint (PPTX) with excellent Hebrew/RTL support. Use when the user asks to 'convert HTML to PowerPoi",
+      "version": "1.0.0"
+    },
+    {
+      "name": "kinetic-video-creator",
+      "source": "./plugins/kinetic-video-creator",
+      "description": "Create professional kinetic typography videos from scratch. Includes speech writing, TTS with emotional dynamics, music ",
+      "version": "1.0.0"
+    },
+    {
+      "name": "music-generator",
+      "source": "./plugins/music-generator",
+      "description": "Generate AI music with ElevenLabs Music API. Use for: background music, soundtracks, jingles, theme songs, instrumental ",
+      "version": "1.0.0"
+    },
+    {
+      "name": "nano-banana-poster",
+      "source": "./plugins/nano-banana-poster",
+      "description": "Generate images and posters with Google Gemini. Use for: create image, generate visual, AI image generation, marketing p",
+      "version": "1.0.0"
+    },
+    {
+      "name": "presentation-architect",
+      "source": "./plugins/presentation-architect",
+      "description": "Transform high-level ideas or briefs into fully structured presentation scripts saved as Markdown files, describing pres",
+      "version": "1.0.0"
+    },
+    {
+      "name": "speech-generator",
+      "source": "./plugins/speech-generator",
+      "description": "Generate speech audio from text using ElevenLabs TTS. Use when user asks to 'send voice', 'send audio message', 'create ",
+      "version": "1.0.0"
+    },
+    {
+      "name": "transcribe",
+      "source": "./plugins/transcribe",
+      "description": "Transcribe audio/video to SRT subtitles using ElevenLabs Scribe v2. Use for: transcription, subtitles, captions, SRT gen",
+      "version": "1.0.0"
+    },
+    {
+      "name": "tutorial-creator",
+      "source": "./plugins/tutorial-creator",
+      "description": "",
+      "version": "1.0.0"
+    },
+    {
+      "name": "tutorial-narration-writer",
+      "source": "./plugins/tutorial-narration-writer",
+      "description": "",
+      "version": "1.0.0"
+    },
+    {
+      "name": "whatsapp",
+      "source": "./plugins/whatsapp",
+      "description": "WhatsApp automation using Green API. Send messages, voice notes, images, and get group members.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "wordpress-publisher",
+      "source": "./plugins/wordpress-publisher",
+      "description": "Publish posts to WordPress. Use for: publish blog post, upload to WordPress, פרסם בבלוג.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "youtube-downloader",
+      "source": "./plugins/youtube-downloader",
+      "description": "Download YouTube videos with quality presets. Use for: download youtube, yt download, video download, youtube to whatsap",
+      "version": "1.0.0"
+    },
+    {
+      "name": "youtube-uploader",
+      "source": "./plugins/youtube-uploader",
+      "description": "Upload videos to YouTube with title, description, tags. Use for: youtube upload, publish video, share on youtube.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "zoom-meeting",
+      "source": "./plugins/zoom-meeting",
+      "description": "Schedule Zoom meetings with calendar invites. Use when scheduling client calls, consultations, or any video meeting. Tri",
+      "version": "1.0.0"
     }
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "name": "youtube-downloader",
+  "version": "1.0.0",
+  "description": "Download YouTube videos with quality presets. Use for: download youtube, yt download, video download, youtube to whatsapp, youtube mp3.",
+  "author": {
+    "name": "aviz",
+    "url": "https://github.com/aviz85"
+  },
+  "homepage": "https://aviz.github.io/claude-skills-library/skills/youtube-downloader.html",
+  "repository": "https://github.com/aviz85/claude-skills-library",
+  "license": "MIT",
+  "skills": "./skills/"
+}

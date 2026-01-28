@@ -1,0 +1,13 @@
+{
+  "name": "nano-banana-poster",
+  "version": "1.0.0",
+  "description": "Generate images and posters with Google Gemini. Use for: create image, generate visual, AI image generation, marketing poster.",
+  "author": {
+    "name": "aviz",
+    "url": "https://github.com/aviz85"
+  },
+  "homepage": "https://aviz.github.io/claude-skills-library/skills/nano-banana-poster.html",
+  "repository": "https://github.com/aviz85/claude-skills-library",
+  "license": "MIT",
+  "skills": "./skills/"
+}

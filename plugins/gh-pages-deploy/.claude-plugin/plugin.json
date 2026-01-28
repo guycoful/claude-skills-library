@@ -1,0 +1,13 @@
+{
+  "name": "gh-pages-deploy",
+  "version": "1.0.0",
+  "description": "description: Deploy static or interactive frontend content to GitHub Pages using gh CLI. Use when the user wants to publish, share, or make accessible",
+  "author": {
+    "name": "aviz",
+    "url": "https://github.com/aviz85"
+  },
+  "homepage": "https://aviz.github.io/claude-skills-library/skills/gh-pages-deploy.html",
+  "repository": "https://github.com/aviz85/claude-skills-library",
+  "license": "MIT",
+  "skills": "./skills/"
+}

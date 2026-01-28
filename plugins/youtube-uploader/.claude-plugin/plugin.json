@@ -1,0 +1,13 @@
+{
+  "name": "youtube-uploader",
+  "version": "1.0.0",
+  "description": "Upload videos to YouTube with title, description, tags. Use for: youtube upload, publish video, share on youtube.",
+  "author": {
+    "name": "aviz",
+    "url": "https://github.com/aviz85"
+  },
+  "homepage": "https://aviz.github.io/claude-skills-library/skills/youtube-uploader.html",
+  "repository": "https://github.com/aviz85/claude-skills-library",
+  "license": "MIT",
+  "skills": "./skills/"
+}

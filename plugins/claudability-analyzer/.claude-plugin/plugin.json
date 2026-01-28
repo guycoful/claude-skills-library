@@ -1,0 +1,13 @@
+{
+  "name": "claudability-analyzer",
+  "version": "1.0.0",
+  "description": "Analyzes a user's profession, job, or daily tasks and breaks them down into specific Claude Code use cases. Use when someone describes what they do an",
+  "author": {
+    "name": "aviz",
+    "url": "https://github.com/aviz85"
+  },
+  "homepage": "https://aviz.github.io/claude-skills-library/skills/claudability-analyzer.html",
+  "repository": "https://github.com/aviz85/claude-skills-library",
+  "license": "MIT",
+  "skills": "./skills/"
+}
