@@ -925,101 +925,31 @@
     </div>
   </section>
 
-  <!-- Auto-Install Section -->
-  <section id="auto-install" style="background: linear-gradient(180deg, transparent 0%, rgba(34, 197, 94, 0.05) 50%, transparent 100%);">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-badge">⚡ התקנה אוטומטית</span>
-        <h2>הדרך הקלה להתקנה</h2>
-        <p>
-          התקינו את סקיל ההתקנה וקלוד ידריך אתכם בהתקנת כל הסקילים האחרים!
-        </p>
-      </div>
-      <div class="steps-grid">
-        <!-- Claude Code CLI -->
-        <div class="step-card reveal" style="border: 2px solid var(--green-primary);">
-          <div class="step-number" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">🖥️</div>
-          <h3>Claude Code (CLI)</h3>
-          <p>הריצו את הפקודות הבאות בתוך Claude Code:</p>
-          <div class="step-code" style="margin-bottom: 12px;">/plugin marketplace add aviz85/claude-skills-library</div>
-          <div class="step-code">/plugin install aviz-skills-installer</div>
-          <p style="margin-top: 16px; font-size: 0.85rem; color: var(--text-muted);">
-            אחרי ההתקנה, פשוט אמרו לקלוד "אני רוצה להתקין סקיל" והוא ידריך אתכם!
-          </p>
-        </div>
-
-        <!-- Claude Desktop App -->
-        <div class="step-card reveal">
-          <div class="step-number" style="background: linear-gradient(135deg, #f59e0b, #d97706);">📦</div>
-          <h3>Claude Desktop App</h3>
-          <p>הורידו את קובץ ה-ZIP והוסיפו דרך ההגדרות:</p>
-          <a href="downloads/aviz-skills-installer.zip" download class="btn btn-primary" style="margin-top: 12px; padding: 12px 24px; display: inline-flex;">
-            ⬇️ הורדת ZIP
-          </a>
-          <div style="margin-top: 16px; font-size: 0.85rem; color: var(--text-secondary); text-align: right;">
-            <p style="margin-bottom: 8px;"><strong>אחרי ההורדה:</strong></p>
-            <ol style="padding-right: 20px; margin: 0;">
-              <li>פתחו <code style="font-size: 0.8rem;">Settings</code> → <code style="font-size: 0.8rem;">Capabilities</code> → <code style="font-size: 0.8rem;">Skills</code></li>
-              <li>לחצו על <code style="font-size: 0.8rem;">+ Add</code></li>
-              <li>בחרו את קובץ ה-ZIP שהורדתם</li>
-            </ol>
-          </div>
-        </div>
-
-        <!-- ZIP Download Install -->
-        <div class="step-card reveal">
-          <div class="step-number" style="background: linear-gradient(135deg, #64748b, #475569);">⬇️</div>
-          <h3>התקנה מהורדת ZIP</h3>
-          <p>הורדתם ZIP של סקיל בודד? ככה מתקינים:</p>
-          <div style="margin-top: 16px; font-size: 0.85rem; color: var(--text-secondary); text-align: right;">
-            <ol style="padding-right: 20px; margin: 0; line-height: 2;">
-              <li>פתחו את ה-ZIP - תקבלו תיקייה בשם הסקיל</li>
-              <li>העתיקו את התיקייה ל:
-                <div class="step-code" style="margin: 8px 0; font-size: 0.75rem;">~/.claude/skills/</div>
-                <span style="color: var(--text-muted);">או לפרויקט ספציפי:</span>
-                <div class="step-code" style="margin: 8px 0; font-size: 0.75rem;">PROJECT/.claude/skills/</div>
-              </li>
-              <li>פתחו Claude Code והריצו <code style="font-size: 0.8rem;">/skills</code></li>
-              <li>וודאו שהסקיל מופיע ברשימה ✓</li>
-            </ol>
-            <div class="info" style="margin-top: 12px; padding: 10px; font-size: 0.8rem;">
-              <span>💡</span>
-              <p style="margin: 0;">המבנה הנכון: <code>.claude/skills/whatsapp/SKILL.md</code></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Installation Section -->
-  <section id="install">
+  <section id="install" style="background: linear-gradient(180deg, transparent 0%, rgba(34, 197, 94, 0.05) 50%, transparent 100%);">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-badge">🔧 התקנה ידנית</span>
-        <h2>התקנה צעד אחר צעד</h2>
-        <p>
-          שלושה צעדים פשוטים להתקנה ידנית
-        </p>
+        <span class="section-badge">⚡ התקנה קלה!</span>
+        <h2>התקנה קלה!</h2>
       </div>
-      <div class="steps-grid">
-        <div class="step-card reveal">
-          <div class="step-number">1</div>
-          <h3>הורידו את הספרייה</h3>
-          <p>פתחו טרמינל והריצו את הפקודה הבאה:</p>
-          <div class="step-code">git clone https://github.com/aviz85/claude-skills-library.git</div>
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 24px;">
+          העתיקו את הפקודה הזו לתוך Claude Code:
+        </p>
+        <div class="step-code" style="font-size: 1.1rem; padding: 20px 24px; margin-bottom: 32px; display: inline-block;">
+          /plugin marketplace add aviz85/claude-skills-library
         </div>
-        <div class="step-card reveal">
-          <div class="step-number">2</div>
-          <h3>העתיקו את הסקילים</h3>
-          <p>העתיקו את הסקילים שאתם רוצים לתיקיית הסקילים של קלוד:<br><small style="color: #888;">💡 משתמשי Windows: פתחו <strong>PowerShell</strong> (לא Command Prompt)</small></p>
-          <div class="step-code">cp -r claude-skills-library/skills/SKILL_NAME ~/.claude/skills/</div>
-        </div>
-        <div class="step-card reveal">
-          <div class="step-number">3</div>
-          <h3>הגדירו והפעילו</h3>
-          <p>הגדירו את קבצי ה-.env לפי ההוראות בכל Skill, הפעילו מחדש את קלוד קוד - וסיימתם!</p>
-          <div class="step-code">claude</div>
+        <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 2;">
+          ואז הקלידו <code style="background: var(--green-soft); color: var(--green-primary); padding: 4px 8px; border-radius: 6px;">/plugin</code> ולחצו ימינה עד לטאב <strong>marketplace</strong><br>
+          בחרו <code style="background: var(--green-soft); color: var(--green-primary); padding: 4px 8px; border-radius: 6px;">aviz-skills-library</code> ואז <strong>browse plugins</strong><br>
+          משם בחרו את הסקיל הרצוי והחליטו אם להתקין גלובלית או רק לפרויקט הנוכחי
+        </p>
+        <div style="margin-top: 32px; padding: 24px; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-subtle);">
+          <p style="font-size: 1rem; color: var(--text-secondary); line-height: 2; margin: 0;">
+            <strong style="color: var(--green-primary);">אחרי ההתקנה:</strong> סגרו את Claude Code והיכנסו מחדש<br>
+            הקישו <code style="background: var(--green-soft); color: var(--green-primary); padding: 4px 8px; border-radius: 6px;">/skills</code> ובדקו שהסקיל מופיע ברשימה<br>
+            אם כן - פשוט בקשו מה שתרצו והסקיל יפעל מעצמו!
+          </p>
         </div>
       </div>
     </div>
