@@ -1,10 +1,10 @@
 ---
 name: claudability-analyzer
-description: "Analyzes a user's profession, job, or daily tasks and breaks them down into specific Claude Code use cases. Use when someone describes what they do and asks 'how can Claude Code help me?' or wants to discover automation opportunities."
+description: "Analyzes professions/jobs for Claude Code automation opportunities. Triggers: 'how can Claude help me', 'what can Claude do for', 'I'm a [profession]', 'help me as a [job]', 'I work as', describing their work + asking about Claude. Use whenever user mentions their profession/role and wants to discover what Claude can automate."
 disable-model-invocation: false
 user-invocable: true
 argument-hint: "[profession or task description]"
-allowed-tools: WebSearch, WebFetch, Read, Grep, Glob
+allowed-tools: WebSearch, WebFetch, Read, Grep, Glob, Write, Skill
 ---
 
 # Claudability Analyzer
@@ -237,6 +237,135 @@ For a "send WhatsApp messages" use case:
 6. **Respect the bottleneck rule** - If one step requires human judgment, design around it.
 
 7. **Research before recommending** - Never suggest APIs or tools without verifying they exist and work.
+
+## Phase 6: Beautiful One-Pager Output
+
+After completing the analysis, generate a **print-ready one-pager** in HTML format.
+
+### One-Pager Design Requirements
+
+Create an HTML file that:
+- Fits on a single A4 page when printed
+- Has professional, clean design with good typography
+- Uses RTL layout for Hebrew content
+- Includes visual hierarchy with colors and spacing
+- Shows the top 3-5 use cases with claudability scores
+- Has a clear CTA (call to action) at the bottom
+
+### HTML Template Structure
+
+```html
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @page { size: A4; margin: 15mm; }
+    body {
+      font-family: 'Heebo', Arial, sans-serif;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 20px;
+      color: #1a1a2e;
+      line-height: 1.4;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .header h1 { margin: 0; font-size: 28px; }
+    .header .subtitle { opacity: 0.9; margin-top: 8px; }
+    .use-case {
+      background: #f8f9fa;
+      border-right: 4px solid #667eea;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .use-case h3 { margin: 0 0 8px 0; color: #1a1a2e; }
+    .stars { color: #f59e0b; }
+    .time-saved {
+      background: #d4edda;
+      color: #155724;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      display: inline-block;
+    }
+    .cta {
+      background: #1a1a2e;
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 11px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🎯 ניתוח Claudability: [תפקיד]</h1>
+    <div class="subtitle">איך Claude Code יכול לחסוך לך שעות בשבוע</div>
+  </div>
+
+  <!-- Use cases here -->
+  <div class="use-case">
+    <h3>[שם] <span class="stars">⭐⭐⭐⭐⭐</span></h3>
+    <p>[תיאור קצר]</p>
+    <span class="time-saved">חיסכון: X שעות/שבוע</span>
+  </div>
+
+  <div class="cta">
+    <strong>הצעד הבא:</strong> [פעולה ספציפית]
+  </div>
+
+  <div class="footer">
+    נוצר עם Claude Code | AVIZ
+  </div>
+</body>
+</html>
+```
+
+### Delivery Workflow
+
+After generating the one-pager:
+
+1. **Save HTML file:**
+   ```
+   /tmp/claudability-[profession]-[timestamp].html
+   ```
+
+2. **Convert to PDF (if html-to-pdf skill available):**
+   ```
+   Use /html-to-pdf skill to convert the HTML to print-ready PDF
+   ```
+
+3. **Send via WhatsApp (if whatsapp skill available):**
+   ```
+   Use /whatsapp skill to send the PDF to the user
+   ```
+
+### Skill Detection
+
+Before output phase, check for available skills:
+- Look for `html-to-pdf` skill → if found, convert to PDF
+- Look for `whatsapp` skill → if found, offer to send via WhatsApp
+
+**Integration command sequence:**
+```
+1. Generate HTML one-pager
+2. If html-to-pdf exists: /html-to-pdf [html-file-path]
+3. If whatsapp exists AND user wants: /whatsapp send the PDF
+```
 
 ## References
 
