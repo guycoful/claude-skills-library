@@ -926,31 +926,90 @@
   </section>
 
   <!-- Installation Section -->
-  <section id="install" style="background: linear-gradient(180deg, transparent 0%, rgba(34, 197, 94, 0.05) 50%, transparent 100%);">
+  <section id="install" style="background: linear-gradient(180deg, transparent 0%, rgba(34, 197, 94, 0.05) 50%, transparent 100%); padding: 120px 0;">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-badge">⚡ התקנה קלה!</span>
-        <h2>התקנה קלה!</h2>
+        <h2>התקנה בשלושה צעדים</h2>
+        <p>פשוט, מהיר, ובלי סיבוכים</p>
       </div>
-      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 24px;">
-          העתיקו את הפקודה הזו לתוך Claude Code:
-        </p>
-        <div class="step-code" style="font-size: 1.1rem; padding: 20px 24px; margin-bottom: 32px; display: inline-block;">
-          /plugin marketplace add aviz85/claude-skills-library
-        </div>
-        <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 2;">
-          ואז הקלידו <code style="background: var(--green-soft); color: var(--green-primary); padding: 4px 8px; border-radius: 6px;">/plugin</code> ולחצו ימינה עד לטאב <strong>marketplace</strong><br>
-          בחרו <code style="background: var(--green-soft); color: var(--green-primary); padding: 4px 8px; border-radius: 6px;">aviz-skills-library</code> ואז <strong>browse plugins</strong><br>
-          משם בחרו את הסקיל הרצוי והחליטו אם להתקין גלובלית או רק לפרויקט הנוכחי
-        </p>
-        <div style="margin-top: 32px; padding: 24px; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-subtle);">
-          <p style="font-size: 1rem; color: var(--text-secondary); line-height: 2; margin: 0;">
-            <strong style="color: var(--green-primary);">אחרי ההתקנה:</strong> סגרו את Claude Code והיכנסו מחדש<br>
-            הקישו <code style="background: var(--green-soft); color: var(--green-primary); padding: 4px 8px; border-radius: 6px;">/skills</code> ובדקו שהסקיל מופיע ברשימה<br>
-            אם כן - פשוט בקשו מה שתרצו והסקיל יפעל מעצמו!
+
+      <div style="max-width: 800px; margin: 0 auto;">
+        <!-- Step 1 -->
+        <div class="reveal" style="background: var(--bg-card); border-radius: 20px; padding: 40px; margin-bottom: 24px; border: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--green-primary), var(--green-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">1</div>
+            <h3 style="margin: 0; font-size: 1.3rem;">הוסיפו את חבילת הסקילים</h3>
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 1.05rem;">
+            העתיקו את הפקודה הזו לתוך Claude Code:
+          </p>
+          <div style="position: relative; display: inline-block; width: 100%;">
+            <div class="step-code" id="install-command" style="font-size: 1.1rem; padding: 20px 60px 20px 24px;">
+              /plugin marketplace add aviz85/claude-skills-library
+            </div>
+            <button onclick="copyCommand()" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: var(--green-primary); border: none; border-radius: 8px; padding: 8px 12px; cursor: pointer; color: white; font-size: 0.85rem; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='var(--green-dark)'" onmouseout="this.style.background='var(--green-primary)'">
+              <span id="copy-text">העתק</span>
+            </button>
+          </div>
+          <p style="color: var(--text-muted); margin-top: 16px; font-size: 0.95rem;">
+            הפקודה הזו מוסיפה את ספריית הסקילים של אביץ ל-marketplace שלכם
           </p>
         </div>
+
+        <!-- Step 2 -->
+        <div class="reveal" style="background: var(--bg-card); border-radius: 20px; padding: 40px; margin-bottom: 24px; border: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--green-primary), var(--green-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">2</div>
+            <h3 style="margin: 0; font-size: 1.3rem;">בחרו את הסקילים שאתם רוצים</h3>
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 1.05rem;">
+            עכשיו הקלידו <code style="background: var(--green-soft); color: var(--green-primary); padding: 6px 12px; border-radius: 8px; font-size: 1.1rem;">/plugin</code> כדי לפתוח את תפריט הפלאגינים
+          </p>
+          <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 24px; margin: 20px 0;">
+            <div style="display: flex; flex-direction: column; gap: 12px; color: var(--text-secondary);">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="color: var(--green-primary);">→</span>
+                <span>לחצו <strong>ימינה</strong> עד שתגיעו לטאב <code style="background: var(--green-soft); color: var(--green-primary); padding: 4px 8px; border-radius: 6px;">marketplace</code></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="color: var(--green-primary);">→</span>
+                <span>בחרו <code style="background: var(--green-soft); color: var(--green-primary); padding: 4px 8px; border-radius: 6px;">aviz-skills-library</code></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="color: var(--green-primary);">→</span>
+                <span>לחצו על <strong>browse plugins</strong></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="color: var(--green-primary);">→</span>
+                <span>בחרו סקיל והחליטו: <strong>גלובלי</strong> (לכל הפרויקטים) או <strong>לפרויקט הנוכחי</strong> בלבד</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="reveal" style="background: linear-gradient(135deg, var(--green-soft), var(--bg-card)); border-radius: 20px; padding: 40px; border: 2px solid var(--border-glow);">
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--green-primary), var(--green-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">3</div>
+            <h3 style="margin: 0; font-size: 1.3rem;">הפעילו מחדש ותהנו!</h3>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 16px; color: var(--text-secondary); font-size: 1.05rem;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 1.3rem;">🔄</span>
+              <span>סגרו את Claude Code והיכנסו מחדש</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 1.3rem;">✅</span>
+              <span>הקישו <code style="background: var(--green-soft); color: var(--green-primary); padding: 4px 8px; border-radius: 6px;">/skills</code> ובדקו שהסקיל מופיע ברשימה</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 1.3rem;">🎉</span>
+              <span><strong>זהו!</strong> פשוט בקשו מה שתרצו - הסקיל יפעל אוטומטית</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1478,6 +1537,18 @@
     cards.forEach((card, index) => {
       card.style.transitionDelay = `${index * 0.1}s`;
     });
+
+    // Copy command function
+    function copyCommand() {
+      const command = '/plugin marketplace add aviz85/claude-skills-library';
+      navigator.clipboard.writeText(command).then(() => {
+        const copyText = document.getElementById('copy-text');
+        copyText.textContent = 'הועתק!';
+        setTimeout(() => {
+          copyText.textContent = 'העתק';
+        }, 2000);
+      });
+    }
 
     // Download skill function - downloads pre-built ZIP from downloads folder
     function downloadSkill(skillName) {
