@@ -254,82 +254,142 @@ Create an HTML file that:
 
 ### HTML Template Structure
 
+**CRITICAL for single-page fit:**
+- Use `@page { margin: 0 }` and fixed height `297mm`
+- Put background on `.container`, NOT on body
+- Use `overflow: hidden` to prevent page break
+- Compact padding/margins, smaller fonts
+
 ```html
 <!DOCTYPE html>
 <html dir="rtl" lang="he">
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    @page { size: A4; margin: 15mm; }
-    body {
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .container {
+      width: 100%;
+      height: 100%;
+      padding: 12mm;
       font-family: 'Heebo', Arial, sans-serif;
-      max-width: 210mm;
-      margin: 0 auto;
-      padding: 20px;
       color: #1a1a2e;
-      line-height: 1.4;
+      line-height: 1.3;
+      font-size: 12px;
+      background: #fff;
     }
     .header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 25px;
-      border-radius: 12px;
-      margin-bottom: 20px;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      text-align: center;
     }
-    .header h1 { margin: 0; font-size: 28px; }
-    .header .subtitle { opacity: 0.9; margin-top: 8px; }
+    .header h1 { margin: 0; font-size: 22px; }
+    .header .subtitle { opacity: 0.9; margin-top: 4px; font-size: 13px; }
+    .intro {
+      background: #f0f4ff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 12px;
+    }
     .use-case {
       background: #f8f9fa;
       border-right: 4px solid #667eea;
-      padding: 15px;
-      margin: 12px 0;
-      border-radius: 0 8px 8px 0;
+      padding: 8px 12px;
+      margin: 6px 0;
+      border-radius: 0 6px 6px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .use-case h3 { margin: 0 0 8px 0; color: #1a1a2e; }
-    .stars { color: #f59e0b; }
+    .use-case h3 { margin: 0; font-size: 13px; }
+    .use-case p { margin: 2px 0 0 0; font-size: 11px; color: #64748b; }
+    .stars { color: #f59e0b; font-size: 11px; }
     .time-saved {
-      background: #d4edda;
-      color: #155724;
-      padding: 3px 10px;
+      background: #10b981;
+      color: white;
+      padding: 4px 10px;
       border-radius: 12px;
-      font-size: 12px;
-      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .example-box {
+      background: #1e1e2e;
+      color: #a6e3a1;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+      font-family: monospace;
+      direction: ltr;
+      text-align: left;
+      font-size: 11px;
     }
     .cta {
       background: #1a1a2e;
       color: white;
-      padding: 20px;
-      border-radius: 12px;
+      padding: 12px;
+      border-radius: 8px;
       text-align: center;
-      margin-top: 20px;
+      margin-top: 10px;
     }
+    .cta h3 { margin: 0; font-size: 14px; }
+    .cta p { margin: 4px 0 0 0; font-size: 12px; opacity: 0.9; }
     .footer {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 11px;
-      color: #666;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 10px;
+      color: #94a3b8;
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>🎯 ניתוח Claudability: [תפקיד]</h1>
-    <div class="subtitle">איך Claude Code יכול לחסוך לך שעות בשבוע</div>
-  </div>
+  <div class="container">
+    <div class="header">
+      <h1>🎯 ניתוח Claudability: [תפקיד]</h1>
+      <div class="subtitle">איך Claude Code יכול לחסוך לך שעות בשבוע</div>
+    </div>
 
-  <!-- Use cases here -->
-  <div class="use-case">
-    <h3>[שם] <span class="stars">⭐⭐⭐⭐⭐</span></h3>
-    <p>[תיאור קצר]</p>
-    <span class="time-saved">חיסכון: X שעות/שבוע</span>
-  </div>
+    <div class="intro">
+      <strong>Claude Code</strong> = סוכן AI בטרמינל עם גישה לקבצים, וואטסאפ, יומן ועוד
+    </div>
 
-  <div class="cta">
-    <strong>הצעד הבא:</strong> [פעולה ספציפית]
-  </div>
+    <!-- Use cases - keep to 4-5 max -->
+    <div class="use-case">
+      <div>
+        <h3>[שם] <span class="stars">⭐⭐⭐⭐⭐</span></h3>
+        <p>[תיאור קצר בשורה אחת]</p>
+      </div>
+      <span class="time-saved">X שע׳/שבוע</span>
+    </div>
 
-  <div class="footer">
-    נוצר עם Claude Code | AVIZ
+    <div class="example-box">
+      $ claude "[פקודה לדוגמה]"<br>
+      ✓ [תוצאה]
+    </div>
+
+    <div class="cta">
+      <h3>🚀 הצעד הבא</h3>
+      <p>[פעולה ספציפית]</p>
+    </div>
+
+    <div class="footer">
+      <span>נוצר עם Claude Code | AVIZ</span>
+      <span>linktr.ee/aviz85</span>
+    </div>
   </div>
 </body>
 </html>
