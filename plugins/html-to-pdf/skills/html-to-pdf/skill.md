@@ -205,6 +205,93 @@ Use CSS page-break properties:
 - Ensure `--background` is set (default is true)
 - Use `--no-background` only if you want to exclude backgrounds
 
+## Auto-Fit Content (MANDATORY VERIFICATION)
+
+**CRITICAL - Claude MUST do this after EVERY PDF generation:**
+
+1. **Read the PDF file** using the Read tool to visually inspect it
+2. Check for **vertical overflow** (empty pages, content spilling to next page)
+3. Check for **horizontal overflow** (text cut off at sides)
+4. **If ANY issue found → FIX and regenerate** (max 5 attempts)
+5. **Only deliver PDF to user after verification passes**
+
+This is NOT optional. Never deliver a PDF without visual verification.
+
+### Problems to Look For
+
+| Problem | Symptom | Fix |
+|---------|---------|-----|
+| **Vertical overflow** | Empty space at page bottom, content on next page | Reduce `--scale` |
+| **Horizontal cut-off** | Text cut at left/right edges | Reduce `--margin` AND fix HTML width |
+| **Both issues** | Content cut AND extra pages | Fix HTML CSS first, then adjust scale |
+
+### Fix Strategy (Max 5 Attempts)
+
+**Attempt 1:** Default settings
+```bash
+node scripts/html-to-pdf.js input.html output.pdf
+```
+
+**Attempt 2:** If vertical overflow → reduce scale
+```bash
+node scripts/html-to-pdf.js input.html output.pdf --scale=0.9
+```
+
+**Attempt 3:** If horizontal cut-off → reduce margins
+```bash
+node scripts/html-to-pdf.js input.html output.pdf --scale=0.9 --margin=10mm
+```
+
+**Attempt 4:** If still issues → smaller scale + margins
+```bash
+node scripts/html-to-pdf.js input.html output.pdf --scale=0.8 --margin=5mm
+```
+
+**Attempt 5:** If still failing → FIX THE HTML CSS:
+```css
+/* Add to HTML to prevent horizontal overflow */
+.container {
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+```
+
+**STOP after 5 attempts** - regenerate HTML with proper constraints.
+
+### HTML Width Fix (Required for Horizontal Fit)
+
+If content is cut at sides, the HTML MUST have:
+
+```css
+html, body {
+  width: 210mm;  /* A4 width */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 15mm;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+```
+
+### Verification Checklist
+
+After EVERY PDF generation, verify:
+- [ ] All text visible (not cut at edges)
+- [ ] No unnecessary empty pages
+- [ ] Content fills pages properly
+- [ ] No large gaps between sections
+
+If ANY check fails → adjust and regenerate (max 5 times).
+
 ## Technical Notes
 
 - Uses Puppeteer with Chrome headless for rendering
