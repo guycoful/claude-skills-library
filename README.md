@@ -6,6 +6,7 @@ A collection of useful skills for Claude Code by aviz.
 
 | Skill | Description |
 |-------|-------------|
+| **find-my-project** | Find your first agentic project by identifying daily pain points |
 | **whatsapp** | WhatsApp automation - send messages, get group members, send images/voice |
 | **speech-generator** | Generate speech audio with ElevenLabs TTS |
 | **nano-banana-poster** | Generate marketing posters using Google GenAI |
