@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Skill - יצירת סקילים אוטומטית מדוקומנטציה</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-primary: #22C55E;
+      --green-glow: rgba(34, 197, 94, 0.4);
+      --green-soft: rgba(34, 197, 94, 0.1);
+      --bg-darkest: #0a0f0d;
+      --bg-dark: #111827;
+      --bg-card: #1a2332;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(34, 197, 94, 0.3);
+      --yellow: #fbbf24;
+      --red: #ef4444;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg-darkest);
+      color: var(--text-primary);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--green-primary); }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .skill-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+    }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--green-soft);
+      border-radius: 100px;
+      color: var(--green-primary);
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2 .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--green-primary);
+      border-radius: 50%;
+      font-size: 1rem;
+    }
+
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--green-primary);
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      background: var(--green-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--green-primary);
+      font-weight: 500;
+    }
+
+    .warning {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .warning-icon { font-size: 1.5rem; }
+    .warning p { margin: 0; color: var(--yellow); }
+
+    .info {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .info p { margin: 0; color: var(--blue); }
+
+    .purple-info {
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .purple-info p { margin: 0; color: var(--purple); }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps-list > li {
+      position: relative;
+      padding: 16px 0;
+      padding-inline-start: 48px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .steps-list > li:last-child { border-bottom: none; }
+
+    .steps-list > li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      inset-inline-start: 0;
+      top: 16px;
+      width: 28px;
+      height: 28px;
+      background: var(--bg-dark);
+      border: 2px solid var(--green-primary);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--green-primary);
+    }
+
+    code {
+      background: var(--bg-dark);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'Menlo', monospace;
+      font-size: 0.9rem;
+      color: var(--green-primary);
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .code-block {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .code-block code {
+      background: none;
+      padding: 0;
+      display: block;
+      white-space: pre;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: #6b7280; }
+    .code-block .key { color: var(--yellow); }
+    .code-block .value { color: var(--green-primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-primary) 0%, #16a34a 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--green-glow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .feature {
+      background: var(--bg-dark);
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .feature-icon { font-size: 2rem; margin-bottom: 8px; }
+    .feature-title { font-weight: 600; margin-bottom: 4px; }
+    .feature-desc { font-size: 0.85rem; color: var(--text-secondary); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    th {
+      background: var(--bg-dark);
+      font-weight: 600;
+    }
+
+    td code {
+      font-size: 0.8rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 48px;
+    }
+
+    footer a {
+      color: var(--green-primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">
+      -> חזרה לדף הראשי
+    </a>
+
+    <div class="hero">
+      <div class="skill-icon">📚</div>
+      <h1>Learn Skill</h1>
+      <p class="subtitle">יצירת סקילים אוטומטית מדוקומנטציה</p>
+      <div class="difficulty">ללא התקנה נדרשת</div>
+    </div>
+
+    <!-- מה הסקיל עושה -->
+    <div class="section">
+      <h2>מה הסקיל הזה עושה?</h2>
+      <p>הסקיל מאפשר לקלוד ללמוד ספריות וטכנולוגיות חדשות אוטומטית מהדוקומנטציה שלהן, ולהפוך את הידע הזה לסקיל שימושי שנשמר לשימוש עתידי.</p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🔍</div>
+          <div class="feature-title">חיפוש דוקומנטציה</div>
+          <div class="feature-desc">מוצא אוטומטית את הדוקס הרשמיים</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📖</div>
+          <div class="feature-title">קריאה וניתוח</div>
+          <div class="feature-desc">מחלץ את המידע החשוב</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✨</div>
+          <div class="feature-title">יצירת סקיל</div>
+          <div class="feature-desc">שומר כסקיל מוכן לשימוש</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔄</div>
+          <div class="feature-title">עדכון אוטומטי</div>
+          <div class="feature-desc">מעדכן סקילים קיימים</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- איך זה עובד -->
+    <div class="section">
+      <h2><span class="num">1</span> איך זה עובד?</h2>
+
+      <p>כשתבקשו מקלוד ללמוד טכנולוגיה חדשה, הוא:</p>
+
+      <ol class="steps-list">
+        <li>
+          <strong>מחפש את הדוקומנטציה הרשמית</strong>
+          <p>משתמש ב-Context7 MCP או בחיפוש אינטרנט למציאת הדוקס</p>
+        </li>
+
+        <li>
+          <strong>מחלץ את המידע החשוב</strong>
+          <p>התקנה, קונספטים, דפוסי שימוש נפוצים, API ומלכודות</p>
+        </li>
+
+        <li>
+          <strong>מוודא קונבנציות</strong>
+          <p>מתייעץ עם claude-code-guide לגבי הפורמט הנכון לכתיבת סקילים</p>
+        </li>
+
+        <li>
+          <strong>יוצר סקיל מובנה</strong>
+          <p>שומר את הידע בפורמט סקיל שקל להשתמש בו</p>
+        </li>
+      </ol>
+
+      <div class="purple-info">
+        <span class="warning-icon">🧠</span>
+        <p><strong>מטא-סקיל:</strong> זהו סקיל שיוצר סקילים אחרים! הוא מרחיב את היכולות של קלוד קוד באופן אוטומטי.</p>
+      </div>
+    </div>
+
+    <!-- שימוש -->
+    <div class="section">
+      <h2><span class="num">2</span> איך להשתמש?</h2>
+
+      <p>פשוט תבקשו מקלוד ללמוד משהו חדש:</p>
+
+      <div class="code-block">
+        <code><span class="comment"># יצירת סקיל חדש</span>
+/learn stripe-payments
+
+<span class="comment"># עדכון סקיל קיים</span>
+/learn stripe-payments --update
+
+<span class="comment"># שמירה בפרויקט במקום גלובלי</span>
+/learn supabase --project</code>
+      </div>
+
+      <h3>דוגמאות לשימוש</h3>
+      <div class="code-block">
+        <code><span class="comment"># ספריות JavaScript</span>
+"למד את react-query"
+"/learn tanstack-router"
+
+<span class="comment"># APIs ושירותים</span>
+"learn about openai api"
+"/learn twilio"
+
+<span class="comment"># כלי פיתוח</span>
+"צור לי סקיל לעבודה עם docker"
+"/learn kubernetes"</code>
+      </div>
+
+      <h3>פרמטרים</h3>
+      <table>
+        <tr>
+          <th>פרמטר</th>
+          <th>תיאור</th>
+          <th>דוגמה</th>
+        </tr>
+        <tr>
+          <td><code>&lt;topic&gt;</code></td>
+          <td>שם הספרייה/טכנולוגיה</td>
+          <td><code>/learn stripe</code></td>
+        </tr>
+        <tr>
+          <td><code>--update</code></td>
+          <td>עדכון סקיל קיים</td>
+          <td><code>/learn stripe --update</code></td>
+        </tr>
+        <tr>
+          <td><code>--project</code></td>
+          <td>שמירה בפרויקט הנוכחי</td>
+          <td><code>/learn prisma --project</code></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- מה נוצר -->
+    <div class="section">
+      <h2><span class="num">3</span> מה נוצר?</h2>
+
+      <p>הסקיל יוצר קובץ <code>skill.md</code> עם המבנה הבא:</p>
+
+      <div class="code-block">
+        <code>---
+name: stripe-payments
+description: Stripe payment integration. Use when...
+---
+
+# Stripe Payments Quick Reference
+
+## Setup
+npm install stripe
+...
+
+## Core Concepts
+- Payment Intents
+- Customers
+- Webhooks
+
+## Common Patterns
+### Create a Payment
+[code example]
+
+## API Quick Reference
+| Method | Purpose |
+|--------|---------|
+| stripe.paymentIntents.create() | ... |
+
+## Gotchas
+- Always verify webhook signatures
+- Use idempotency keys</code>
+      </div>
+
+      <h3>מיקום הקבצים</h3>
+      <table>
+        <tr>
+          <th>מצב</th>
+          <th>מיקום</th>
+        </tr>
+        <tr>
+          <td>ברירת מחדל (גלובלי)</td>
+          <td><code>~/.claude/skills/&lt;topic&gt;/skill.md</code></td>
+        </tr>
+        <tr>
+          <td>עם <code>--project</code></td>
+          <td><code>.claude/skills/&lt;topic&gt;/skill.md</code></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- דרישות -->
+    <div class="section">
+      <h2><span class="num">4</span> דרישות (אופציונלי)</h2>
+
+      <p>הסקיל עובד גם בלי הגדרות נוספות, אבל עובד טוב יותר עם:</p>
+
+      <h3>Context7 MCP Plugin (מומלץ)</h3>
+      <p>מספק גישה ישירה לדוקומנטציה של אלפי ספריות. להתקנה:</p>
+      <div class="code-block">
+        <code><span class="comment"># הוסיפו לקובץ ההגדרות של Claude Code</span>
+# ~/.claude/settings.json או .claude/settings.json
+
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@context7/mcp"]
+    }
+  }
+}</code>
+      </div>
+
+      <div class="info">
+        <span class="warning-icon">💡</span>
+        <p><strong>בלי Context7:</strong> הסקיל ישתמש ב-WebSearch כגיבוי ויחפש דוקומנטציה באינטרנט.</p>
+      </div>
+    </div>
+
+    <!-- טיפים -->
+    <div class="section">
+      <h2>טיפים לשימוש מיטבי</h2>
+
+      <h3>בחירת נושאים טובים</h3>
+      <ul style="color: var(--text-secondary); padding-right: 20px;">
+        <li>ספריות עם דוקומנטציה טובה (Stripe, Supabase, etc.)</li>
+        <li>APIs עם reference ברור</li>
+        <li>כלים שמשתמשים בהם הרבה</li>
+      </ul>
+
+      <h3>מתי לעדכן?</h3>
+      <ul style="color: var(--text-secondary); padding-right: 20px;">
+        <li>כשיוצא major version חדש</li>
+        <li>כשמגלים שחסר משהו בסקיל</li>
+        <li>כשהדוקומנטציה משתנה משמעותית</li>
+      </ul>
+
+      <div class="warning">
+        <span class="warning-icon">⚠️</span>
+        <p><strong>חשוב:</strong> הסקיל לא מעתיק דוקומנטציה מילה במילה (זכויות יוצרים). הוא מחלץ את המידע החשוב ומארגן אותו מחדש.</p>
+      </div>
+    </div>
+
+    <!-- דוגמה מלאה -->
+    <div class="section">
+      <h2>דוגמה מלאה</h2>
+
+      <div class="code-block">
+        <code><span class="comment"># המשתמש מבקש:</span>
+/learn stripe-payments
+
+<span class="comment"># קלוד:</span>
+1. מחפש "stripe" ב-Context7...
+   → מצא /stripe/stripe-node
+
+2. מחלץ מידע:
+   - Installation & setup
+   - Authentication
+   - Payment Intents
+   - Webhooks
+   - Error handling
+
+3. מתייעץ עם claude-code-guide על קונבנציות...
+
+4. יוצר ~/.claude/skills/stripe-payments/skill.md
+
+5. מדווח:
+   "נוצר סקיל stripe-payments!
+    טריגרים: 'stripe payment', 'charge card', 'payment intent'"</code>
+      </div>
+    </div>
+
+    <div class="cta-buttons" style="justify-content: center; margin-top: 48px;">
+      <a href="../index.html" class="btn btn-secondary">-> חזרה לדף הראשי</a>
+      <a href="https://github.com/aviz85/claude-skills-library/tree/main/skills/learn" target="_blank" class="btn btn-primary">קוד מלא ב-GitHub</a>
+    </div>
+
+    <footer>
+      <p>יש שאלות? פתחו Issue ב-<a href="https://github.com/aviz85/claude-skills-library" target="_blank">GitHub</a></p>
+    </footer>
+  </div>
+</body>
+</html>
