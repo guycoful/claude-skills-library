@@ -25,10 +25,7 @@ Toggle ON: "Google Apps Script API"
 ```bash
 cd ~/.claude/skills/gmail/scripts
 
-# Remove existing .clasp.json (has original project ID)
-rm -f .clasp.json
-
-# Create YOUR project
+# Create your project (generates .clasp.json with your ID)
 clasp create --title "Gmail API" --type webapp
 
 # Push the code
