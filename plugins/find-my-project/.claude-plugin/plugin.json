@@ -1,0 +1,14 @@
+{
+  "name": "find-my-project",
+  "version": "1.0.0",
+  "description": "Helps beginners find their first agentic project through pain point identification. Guides through questioning, analysis, project suggestion, and setup.",
+  "author": {
+    "name": "aviz",
+    "url": "https://github.com/aviz85"
+  },
+  "homepage": "https://aviz85.github.io/claude-skills-library",
+  "repository": "https://github.com/aviz85/claude-skills-library",
+  "license": "MIT",
+  "keywords": ["agentic", "project", "beginner", "setup", "onboarding"],
+  "skills": "./skills/"
+}
