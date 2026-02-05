@@ -1,54 +1,63 @@
+---
+name: find-my-project
+description: "Helps beginners find their first AGENTIC project through pain point identification. Guides through questioning, analysis, project suggestion, and folder setup. Use when someone asks 'what project should I build?' or 'help me get started with Claude Code'."
+disable-model-invocation: false
+user-invocable: true
+argument-hint: "[optional: profession or pain point]"
+allowed-tools: Read, Write, Bash, Glob, Task
+---
+
 # Find My Project - סקיל למציאת הפרוייקט המושלם
 
 > עזרה למשתמשים למצוא את הפרוייקט **האג'נטי** הראשון שלהם ב-Claude Code דרך זיהוי כאבים יומיומיים
 
-## ⚠️ חובה: התייעצות עם claude-code-guide
+## CRITICAL: Consult claude-code-guide
 
-**לפני כל החלטה משמעותית**, השתמש ב:
+**Before any significant decision**, use:
 ```
 Task tool with subagent_type=claude-code-guide
 ```
 
-שאלות לדוגמה:
+Example questions:
 - "What Claude Code primitives exist for [use case]?"
 - "How to structure an agentic project for [specific workflow]?"
 - "What's the difference between skills, agents, and hooks?"
 
-## מהו פרוייקט אג'נטי?
+## What is an Agentic Project?
 
-**פרוייקט אג'נטי ≠ קוד רגיל או אוטומציה קלאסית**
+**Agentic project ≠ traditional code or classic automation**
 
-פרוייקט אג'נטי בנוי מ:
-- **CLAUDE.md** - ידע על המשתמש והפרוייקט
-- **סקילים** - יכולות מודולריות שהסוכן מפעיל
-- **תהליכים** - ערימות של סקילים
-- **כלים** - חיבורים לעולם החיצוני
+An agentic project is built from:
+- **CLAUDE.md** - Knowledge about the user and project
+- **Skills** - Modular capabilities the agent can invoke
+- **Processes** - Stacks of skills
+- **Tools** - Connections to external world
 
-**זה לא:**
-- ❌ אפליקציית React/Node.js
-- ❌ סקריפט Python
-- ❌ מסד נתונים עם API
-- ❌ אוטומציה של Zapier/Make
+**It is NOT:**
+- ❌ React/Node.js application
+- ❌ Python script
+- ❌ Database with API
+- ❌ Zapier/Make automation
 
-**זה כן:**
-- ✅ מסמכים שהסוכן יודע לקרוא ולעדכן
-- ✅ סקילים שהסוכן יודע להפעיל
-- ✅ ידע שהסוכן משתמש בו להחלטות
-- ✅ תבניות שהסוכן ממלא
+**It IS:**
+- ✅ Documents the agent knows how to read and update
+- ✅ Skills the agent knows how to invoke
+- ✅ Knowledge the agent uses for decisions
+- ✅ Templates the agent fills in
 
-## מטרת הסקיל
+## Goal
 
-לעזור למשתמשים חדשים ב-Claude Code:
-1. לזהות את הכאבים היומיומיים שלהם
-2. למצוא פרוייקט אג'נטי מתאים (לא קוד!)
-3. להקים את מבנה הפרוייקט
-4. להתחיל עם קבצים ראשוניים
+Help new Claude Code users:
+1. Identify their daily pain points
+2. Find a suitable agentic project (not code!)
+3. Set up the project structure
+4. Start with initial files
 
-## תהליך העבודה
+## Workflow
 
-### שלב 1: תשאול על הכאבים
+### Step 1: Pain Point Discovery
 
-שאל את המשתמש שאלות על העבודה היומיומית שלו:
+Ask the user about their daily work:
 
 ```
 🎯 בוא נמצא את הפרוייקט המושלם עבורך!
@@ -69,65 +78,63 @@ Task tool with subagent_type=claude-code-guide
 4. **מה היית רוצה שיעשה לבד?**
 ```
 
-### שלב 2: ניתוח וזיהוי הזדמנויות
+### Step 2: Analysis and Opportunity Identification
 
-**חובה**: לפני שממשיכים, התייעץ עם claude-code-guide:
+**REQUIRED**: Before continuing, consult claude-code-guide:
 ```
 Use Task tool with subagent_type=claude-code-guide to ask:
 "I have a user who [describe pain points]. What Claude Code primitives and project structure would be best for an AGENTIC project (not traditional code) to solve this?"
 ```
 
-על בסיס התשובות והתייעצות, זהה:
-- משימות חוזרות → סקילים
-- תהליכים מרובי שלבים → ערימות סקילים
-- מידע שצריך להיות זמין → CLAUDE.md + קבצי data
-- פעולות חיצוניות → כלים (MCP/API)
+Based on responses and consultation, identify:
+- Repetitive tasks → Skills
+- Multi-step processes → Skill stacks
+- Information that needs to be available → CLAUDE.md + data files
+- External actions → Tools (MCP/API)
 
-### שלב 3: הצעת פרוייקט
+### Step 3: Project Proposal
 
-הצג למשתמש את הפרוייקט המומלץ:
+Present the recommended project to the user:
 
 ```
 💡 הפרוייקט המומלץ עבורך:
 
-**שם הפרוייקט:** [שם מתאים]
+**שם הפרוייקט:** [appropriate name]
 
 **מה הוא יעשה:**
-- [יכולת 1]
-- [יכולת 2]
-- [יכולת 3]
+- [capability 1]
+- [capability 2]
+- [capability 3]
 
 **למה זה מתאים לך:**
-- פותר את: [כאב ספציפי]
-- חוסך: [משהו ספציפי]
+- פותר את: [specific pain]
+- חוסך: [specific benefit]
 
 **מבנה מומלץ:**
-```
 project-name/
 ├── CLAUDE.md          # הידע על הפרוייקט ועליך
 ├── data/              # קבצי מידע (לקוחות, משימות...)
 ├── templates/         # תבניות (מסמכים, הודעות...)
 └── .claude/skills/    # סקילים ספציפיים לפרוייקט
-```
 
 רוצה שאקים את התיקייה?
 ```
 
-### שלב 4: הקמת הפרוייקט
+### Step 4: Project Setup
 
-אם המשתמש מאשר:
+If user approves:
 
-1. **צור את התיקייה והמבנה:**
+1. **Create the folder structure:**
 ```bash
 mkdir -p ~/projects/[project-name]/{data,templates,.claude/skills}
 ```
 
-2. **צור CLAUDE.md התחלתי** עם:
-   - מידע על המשתמש (מהתשאול)
-   - מטרת הפרוייקט
-   - כללים בסיסיים
+2. **Create initial CLAUDE.md** with:
+   - User information (from questioning)
+   - Project purpose
+   - Basic rules
 
-3. **הצע קבצי מידע להכניס:**
+3. **Suggest data files to add:**
 ```
 📥 כדי שאוכל לעזור לך טוב יותר, שקול להכניס לתיקייה:
 
@@ -139,53 +146,53 @@ mkdir -p ~/projects/[project-name]/{data,templates,.claude/skills}
 אחרי שתכניס - אני אוכל לעזור לך לבנות את הסקיל הראשון!
 ```
 
-### שלב 5: המלצה על סקיל ראשון
+### Step 5: First Skill Recommendation
 
-בהתבסס על הכאבים שזוהו, הצע סקיל ראשון:
+Based on identified pains, suggest a first skill:
 
 ```
 ⚡ הסקיל הראשון המומלץ:
 
-**שם:** [שם הסקיל]
-**מה יעשה:** [תיאור קצר]
+**שם:** [skill name]
+**מה יעשה:** [short description]
 
 רוצה שניצור אותו יחד?
 ```
 
-**חשוב**: לפני יצירת הסקיל, התייעץ עם claude-code-guide:
+**Important**: Before creating the skill, consult claude-code-guide:
 ```
 Use Task tool with subagent_type=claude-code-guide to ask:
 "How to create a skill for [specific task]? What's the best structure?"
 ```
 
-## דוגמאות לפרוייקטים נפוצים
+## Common Project Examples
 
-### לפרילנסר/עצמאי:
-- **ניהול לקוחות** - הצעות מחיר, חוזים, מעקב
-- **ניהול פרוייקטים** - משימות, דדליינים, דיווחים
+### For Freelancers:
+- **Client Management** - quotes, contracts, tracking
+- **Project Management** - tasks, deadlines, reports
 
-### למנהל:
-- **דוחות שבועיים** - איסוף מידע, עיבוד, הפקה
-- **מעקב צוות** - משימות, סטטוסים, התראות
+### For Managers:
+- **Weekly Reports** - data collection, processing, generation
+- **Team Tracking** - tasks, statuses, alerts
 
-### ליזם:
-- **ניהול לידים** - מעקב, תזכורות, המרה
-- **תוכן ושיווק** - יצירת פוסטים, תזמון, מדידה
+### For Entrepreneurs:
+- **Lead Management** - tracking, reminders, conversion
+- **Content & Marketing** - post creation, scheduling, measurement
 
-## מה הסקיל לא עושה
+## What This Skill Does NOT Do
 
-- לא בונה אפליקציות קלאסיות (React, Node.js...)
-- לא יוצר מסדי נתונים
-- מתמקד ב**אקוסיסטם של Claude Code**: מסמכים, סקילים, סוכנים
+- Does not build classic applications (React, Node.js...)
+- Does not create databases
+- Focuses on **Claude Code ecosystem**: documents, skills, agents
 
-## כלים להתייעצות
+## Consultation Tool
 
-בכל שלב שצריך מידע על יכולות Claude Code:
+Whenever you need information about Claude Code capabilities:
 ```
 Task tool with subagent_type=claude-code-guide
 ```
 
-שאלות לדוגמה:
+Example questions:
 - "What primitives exist in Claude Code for managing data?"
 - "How to create a skill that calls other skills?"
 - "What's the best way to structure CLAUDE.md?"
