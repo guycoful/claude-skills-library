@@ -1,19 +1,26 @@
 ---
 name: learn
-description: Auto-generate Claude skills from web documentation, APIs, and reference materials. Use when user says "/learn <topic>", "learn about X", or wants to add library/framework knowledge. Example - "/learn stripe-payments" researches Stripe docs and creates a reusable skill.
-version: "1.0.0"
+description: Teach Claude ANY topic - code libraries, APIs, concepts, tools, methodologies, or domains. Researches via web and docs, then retains knowledge as a permanent skill. Use when user says "/learn <topic>", "learn about X", "teach yourself Y", "become an expert on Z". Examples - "/learn stripe" for payments, "/learn GTD" for productivity, "/learn israeli-tax-law" for domain knowledge.
+version: "1.1.0"
 author: aviz85
 tags:
-  - documentation
-  - skills
-  - automation
+  - learning
+  - knowledge
+  - research
   - meta
 argument-hint: "<topic> [--update] [--project]"
 ---
 
-# Learn: Auto-generate Skills from Documentation
+# Learn: Teach Claude Any Topic
 
-Transform web documentation into reusable Claude skills automatically.
+Research and learn any topic, then retain the knowledge as a permanent skill. Works for:
+- **Code libraries**: React, Stripe, Supabase (uses Context7 when available)
+- **APIs & Services**: Twilio, OpenAI, Google APIs
+- **Concepts & Methodologies**: GTD, Agile, Design Patterns
+- **Domain Knowledge**: Tax law, medical terminology, industry practices
+- **Tools**: Docker, Kubernetes, FFmpeg
+
+After learning, Claude becomes an expert on that topic in all future conversations.
 
 ## Usage
 
@@ -25,19 +32,30 @@ Transform web documentation into reusable Claude skills automatically.
 
 ## Process
 
-### 1. Resolve Documentation Source
+### 1. Research the Topic
 
-Use Context7 MCP to find official documentation:
-
+**For code libraries/APIs** - try Context7 first:
 ```
 mcp__plugin_context7_context7__resolve-library-id
   query: "user's task/question"
   libraryName: "<topic>"
 ```
 
-If Context7 doesn't have the library, fall back to WebSearch:
-- Search: `"<topic>" documentation official site`
-- Look for: official docs, API reference, getting started guides
+**For any topic** (or if Context7 doesn't have it) - use WebSearch:
+```
+WebSearch: "<topic>" guide tutorial best practices
+WebSearch: "<topic>" official documentation
+WebSearch: "<topic>" examples patterns
+```
+
+**For domain knowledge** - broader research:
+```
+WebSearch: "<topic>" comprehensive guide
+WebSearch: "<topic>" key concepts terminology
+WebSearch: "<topic>" common mistakes pitfalls
+```
+
+Use WebFetch to read the most relevant pages found.
 
 ### 2. Extract Knowledge
 
