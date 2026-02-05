@@ -461,7 +461,24 @@ npm install -g @google/clasp</code>
             <li>הריצו <code>testAuth</code> - לאישור הרשאות Gmail</li>
           </ul>
         </li>
+
+        <li>
+          <strong>אשרו גישה ל-Gmail (OAuth)</strong>
+          <p>כשתריצו <code>testAuth</code>, גוגל יבקש הרשאות:</p>
+          <ul style="color: var(--text-secondary); padding-right: 20px;">
+            <li>לחצו <strong>Review permissions</strong></li>
+            <li>בחרו את חשבון הגוגל שלכם</li>
+            <li>תראו אזהרה <strong>"Google hasn't verified this app"</strong></li>
+            <li>לחצו <strong>Advanced</strong> ואז <strong>Go to Gmail API (unsafe)</strong></li>
+            <li>לחצו <strong>Allow</strong> לאישור גישה</li>
+          </ul>
+        </li>
       </ol>
+
+      <div class="info">
+        <span class="warning-icon">💡</span>
+        <p><strong>למה "unsafe"?</strong> הסקריפט לא פורסם ב-Google Marketplace. זה בטוח - זה הקוד שלכם שרץ על החשבון שלכם!</p>
+      </div>
 
       <div class="info">
         <span class="warning-icon">🔐</span>

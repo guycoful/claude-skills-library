@@ -34,22 +34,37 @@ clasp push
 
 ## 4. Set Your Secret Token
 
+Generate a secure token:
+```bash
+openssl rand -hex 16
+```
+Copy the output (e.g., `a1b2c3d4e5f6...`).
+
+Open the project in browser:
 ```bash
 clasp open
 ```
 
 In the Apps Script editor:
-1. Find `setupToken()` function in Code.gs
-2. Change `'YOUR_SECRET_TOKEN_HERE'` to a random string
-3. Run > `setupToken`
-4. Run > `testAuth` (grants Gmail permissions)
+1. Open `Code.gs`
+2. Find `setupToken()` function
+3. Replace `'YOUR_SECRET_TOKEN_HERE'` with your generated token
+4. Click **Run** > select `setupToken` > click **Run**
+5. Click **Run** > select `testAuth` > click **Run**
 
-Generate a secure token:
-```bash
-openssl rand -hex 16
-```
+## 5. Authorize Gmail Access (OAuth)
 
-## 5. Deploy as Web App
+When you run `testAuth`, Google will ask for permissions:
+
+1. Click **Review permissions**
+2. Select your Google account
+3. You'll see **"Google hasn't verified this app"** warning
+4. Click **Advanced** → **Go to Gmail API (unsafe)**
+5. Click **Allow** to grant Gmail access
+
+> **Why "unsafe"?** Your script isn't published to Google Marketplace. It's safe - it's YOUR code running on YOUR account.
+
+## 6. Deploy as Web App
 
 In Apps Script UI: Deploy > New deployment > Web app:
 - Execute as: **Me**
@@ -61,7 +76,7 @@ clasp deploy --description "Gmail API v1"
 clasp deployments  # Copy the URL
 ```
 
-## 6. Configure Environment
+## 7. Configure Environment
 
 Add to `~/.zshrc` or `~/.bashrc`:
 
@@ -72,7 +87,7 @@ export GMAIL_API_TOKEN="your-secret-token"
 
 Then: `source ~/.zshrc`
 
-## 7. Test
+## 8. Test
 
 ```bash
 # Test inbox
