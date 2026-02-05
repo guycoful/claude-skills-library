@@ -851,7 +851,8 @@
         <li><a href="#skills">הסקילים</a></li>
         <li><a href="#combos">שילובים</a></li>
         <li><a href="#install">התקנה</a></li>
-        <li><a href="#faq">שאלות נפוצות</a></li>
+        <li><a href="#tips">טיפים</a></li>
+        <li><a href="#faq">שאלות</a></li>
         <li><a href="https://github.com/aviz85/claude-skills-library" target="_blank">GitHub</a></li>
       </ul>
     </div>
@@ -1432,6 +1433,183 @@
     </div>
   </section>
 
+  <!-- Claude Code Tips Section -->
+  <section id="tips" style="padding: 100px 0; background: linear-gradient(180deg, rgba(34, 197, 94, 0.03) 0%, transparent 50%, rgba(34, 197, 94, 0.03) 100%);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">🚀 טיפים מתקדמים</span>
+        <h2>Claude Code Tips</h2>
+        <p>טיפים שיהפכו אתכם למקצוענים</p>
+      </div>
+
+      <div style="max-width: 900px; margin: 0 auto;">
+
+        <!-- Windows Right-Click -->
+        <div class="reveal" style="background: var(--bg-card); border-radius: 16px; padding: 32px; margin-bottom: 20px; border: 1px solid var(--border-subtle);">
+          <h3 style="color: var(--green-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">🖱️</span> קליק ימני על תיקייה (Windows)
+          </h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            רוצים לפתוח תיקייה ב-Claude Code בקליק ימני? פשוט בקשו מקלוד:
+          </p>
+          <div class="step-code" style="margin-bottom: 12px;">
+            "הוסף לתפריט קליק ימני אפשרות לפתוח תיקייה ב-Claude Code"
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: 12px;">
+            קלוד יוסיף לרגיסטרי של Windows שתי אפשרויות:
+          </p>
+          <ul style="color: var(--text-secondary); padding-right: 24px; line-height: 2;">
+            <li><strong style="color: var(--text-primary);">Open in Claude Code</strong> - פתיחה רגילה</li>
+            <li><strong style="color: var(--text-primary);">Open in Claude Code (No Limits)</strong> - מצב ללא מעצורים</li>
+          </ul>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 16px;">
+            💡 בקשו שיוסיף גם "הפעל כמנהל" לאפשרות השנייה
+          </p>
+        </div>
+
+        <!-- Dangerously Skip Permissions -->
+        <div class="reveal" style="background: var(--bg-card); border-radius: 16px; padding: 32px; margin-bottom: 20px; border: 1px solid rgba(239, 68, 68, 0.3);">
+          <h3 style="color: #ef4444; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">⚡</span> מצב ללא מעצורים
+          </h3>
+          <div class="step-code" style="margin-bottom: 16px; border-color: rgba(239, 68, 68, 0.3);">
+            claude --dangerously-skip-permissions
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            <strong style="color: #ef4444;">מה זה?</strong> מצב שבו קלוד לא מבקש אישור לפני כל פעולה - הוא פשוט עושה.
+          </p>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            <strong style="color: var(--green-primary);">מתי להשתמש:</strong> כשאתם בטוחים במה שאתם עושים ורוצים לחסוך את ה"האם לאפשר?" על כל פעולה.
+          </p>
+          <p style="color: #ef4444; font-size: 0.9rem;">
+            ⚠️ זהירות: השתמשו רק בפרויקטים שאתם מכירים. קלוד יכול למחוק/לשנות קבצים בלי לשאול.
+          </p>
+        </div>
+
+        <!-- /init Command -->
+        <div class="reveal" style="background: var(--bg-card); border-radius: 16px; padding: 32px; margin-bottom: 20px; border: 1px solid var(--border-subtle);">
+          <h3 style="color: var(--green-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">🎬</span> פקודת /init
+          </h3>
+          <div class="step-code" style="margin-bottom: 16px;">
+            /init
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            פקודת <code style="background: var(--green-soft); color: var(--green-primary); padding: 2px 8px; border-radius: 4px;">/init</code> מאתחלת פרויקט חדש. קלוד יסרוק את התיקייה, יזהה את סוג הפרויקט, וייצור קובץ <code style="background: var(--green-soft); color: var(--green-primary); padding: 2px 8px; border-radius: 4px;">CLAUDE.md</code> מותאם.
+          </p>
+          <p style="color: var(--text-secondary);">
+            הקובץ הזה מלמד את קלוד איך לעבוד עם הפרויקט שלכם - איזה פקודות להריץ, מה חשוב לדעת, ואיזה כללים לעקוב.
+          </p>
+        </div>
+
+        <!-- find-my-project Skill -->
+        <div class="reveal" style="background: var(--bg-card); border-radius: 16px; padding: 32px; margin-bottom: 20px; border: 1px solid var(--border-subtle);">
+          <h3 style="color: var(--green-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">🎯</span> איך מתחילים פרויקט אג'נטי?
+          </h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            בפלאגין שלנו יש סקיל <code style="background: var(--green-soft); color: var(--green-primary); padding: 2px 8px; border-radius: 4px;">find-my-project</code> שעוזר לכם למצוא את הפרויקט הראשון שלכם.
+          </p>
+          <ol style="color: var(--text-secondary); padding-right: 24px; line-height: 2.2;">
+            <li>הסקיל שואל 3 שאלות על הכאבים היומיומיים שלכם</li>
+            <li>מנתח ומציע רעיונות לאוטומציה</li>
+            <li><strong style="color: var(--text-primary);">מסתיים באפיון מערכת מפורט</strong></li>
+            <li>אחרי שמקבלים אפיון - מבקשים מקלוד <strong style="color: var(--green-primary);">"לממש את האפיון"</strong></li>
+          </ol>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 16px;">
+            💡 הסקיל משתמש גם ב-gmail לבדיקת דפוסים במיילים שלכם (אם הותקן)
+          </p>
+        </div>
+
+        <!-- Custom Shortcuts -->
+        <div class="reveal" style="background: var(--bg-card); border-radius: 16px; padding: 32px; margin-bottom: 20px; border: 1px solid var(--border-subtle);">
+          <h3 style="color: var(--green-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">⌨️</span> קיצורים אישיים
+          </h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            אפשר להגדיר קיצורים אישיים בקובץ <code style="background: var(--green-soft); color: var(--green-primary); padding: 2px 8px; border-radius: 4px;">~/.claude/CLAUDE.md</code> הגלובלי:
+          </p>
+          <div class="step-code" style="margin-bottom: 12px; font-size: 0.95rem;">
+## Shortcodes
+| Code | Meaning | Action |
+|------|---------|--------|
+| TSK | Tweak Skill | עדכן את הסקיל הרלוונטי |
+| WAME | WhatsApp ME | שלח לי בוואטסאפ |
+          </div>
+          <p style="color: var(--text-secondary);">
+            עכשיו כשתכתבו "TSK" קלוד יבין שצריך לעדכן את הסקיל עם מה שלמד בשיחה.
+          </p>
+        </div>
+
+        <!-- Agent vs Skill -->
+        <div class="reveal" style="background: var(--bg-card); border-radius: 16px; padding: 32px; margin-bottom: 20px; border: 1px solid var(--border-subtle);">
+          <h3 style="color: var(--green-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">🤔</span> מה ההבדל בין Agent ל-Skill?
+          </h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+            <div style="background: rgba(34, 197, 94, 0.1); border-radius: 12px; padding: 20px; border: 1px solid rgba(34, 197, 94, 0.2);">
+              <h4 style="color: var(--green-primary); margin-bottom: 12px;">📚 Skill</h4>
+              <ul style="color: var(--text-secondary); padding-right: 16px; font-size: 0.95rem; line-height: 1.8;">
+                <li>ידע + כלים שנטענים לקלוד</li>
+                <li>רץ בהקשר של השיחה הנוכחית</li>
+                <li>כמו "מדריך" שקלוד קורא</li>
+                <li>לא צורך context נוסף</li>
+              </ul>
+            </div>
+            <div style="background: rgba(59, 130, 246, 0.1); border-radius: 12px; padding: 20px; border: 1px solid rgba(59, 130, 246, 0.2);">
+              <h4 style="color: #3b82f6; margin-bottom: 12px;">🤖 Agent</h4>
+              <ul style="color: var(--text-secondary); padding-right: 16px; font-size: 0.95rem; line-height: 1.8;">
+                <li>תהליך עצמאי שרץ בנפרד</li>
+                <li>יש לו context משלו</li>
+                <li>יכול לרוץ ברקע</li>
+                <li>מתאים למשימות ארוכות</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Background Agents -->
+        <div class="reveal" style="background: var(--bg-card); border-radius: 16px; padding: 32px; margin-bottom: 20px; border: 1px solid var(--border-subtle);">
+          <h3 style="color: var(--green-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">🔄</span> הרצת סוכנים ברקע
+          </h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            אפשר להריץ כמה סוכנים במקביל! קלוד יכול להפעיל סוכן ברקע ולהמשיך לעבוד על משהו אחר.
+          </p>
+          <div class="step-code" style="margin-bottom: 12px;">
+            "הרץ סוכן ברקע שיבדוק את כל הקבצים ויתקן שגיאות"
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            סוכנים ברקע שימושיים במיוחד ל:
+          </p>
+          <ul style="color: var(--text-secondary); padding-right: 24px; line-height: 2;">
+            <li>עיבוד כמויות גדולות של קבצים</li>
+            <li>חיפוש מידע מקיף בקוד</li>
+            <li>בדיקות אוטומטיות ארוכות</li>
+            <li>ניטור שינויים</li>
+          </ul>
+        </div>
+
+        <!-- SETUP.md -->
+        <div class="reveal" style="background: var(--bg-card); border-radius: 16px; padding: 32px; border: 1px solid var(--border-subtle);">
+          <h3 style="color: var(--green-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">⚙️</span> התקנה אוטומטית עם SETUP.md
+          </h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            רוב הסקילים בספרייה כוללים קובץ <code style="background: var(--green-soft); color: var(--green-primary); padding: 2px 8px; border-radius: 4px;">SETUP.md</code> שמאפשר לקלוד להתקין הכל בעצמו.
+          </p>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            פשוט תבקשו ממנו להתקין את הסקיל והוא יקרא את המדריך ויבצע את כל השלבים - התקנת חבילות, יצירת קבצי .env, הגדרות וכו'.
+          </p>
+          <div class="step-code">
+            "התקן את סקיל whatsapp" → קלוד קורא את SETUP.md ומבצע
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ Section -->
   <section id="faq" style="background: linear-gradient(180deg, transparent 0%, rgba(34, 197, 94, 0.02) 50%, transparent 100%);">
     <div class="container">
@@ -1531,7 +1709,8 @@
       <div class="footer-links">
         <a href="https://github.com/aviz85/claude-skills-library" target="_blank">GitHub</a>
         <a href="#skills">הסקילים</a>
-        <a href="#faq">שאלות נפוצות</a>
+        <a href="#tips">טיפים</a>
+        <a href="#faq">שאלות</a>
       </div>
       <p class="footer-credit">
         נוצר באהבה עם <a href="https://claude.ai" target="_blank">Claude</a> 💚
