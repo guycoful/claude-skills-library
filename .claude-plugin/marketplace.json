@@ -18,6 +18,12 @@
       "version": "1.0.0"
     },
     {
+      "name": "gmail",
+      "source": "./plugins/gmail",
+      "description": "Gmail automation via Google Apps Script. Use for: send emails, read inbox, create drafts, search messages.",
+      "version": "1.0.0"
+    },
+    {
       "name": "claudability-analyzer",
       "source": "./plugins/claudability-analyzer",
       "description": "Analyzes a user's profession, job, or daily tasks and breaks them down into specific Claude Code use cases. Use when som",
