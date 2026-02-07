@@ -6,19 +6,26 @@ This is the official AVIZ Skills Library repository - a collection of Claude Cod
 
 ```
 claude-skills-library/
-├── skills/                  # All skills live here
+├── skills/                  # Source of truth - all skills live here
 │   └── {skill-name}/
 │       ├── SKILL.md         # Required - main skill file
 │       ├── scripts/         # Optional - executable code
 │       ├── references/      # Optional - additional docs
 │       └── assets/          # Optional - static files
+├── plugins/                 # Auto-generated marketplace wrappers (via sync script)
+│   └── {skill-name}/
+│       ├── .claude-plugin/plugin.json
+│       └── skills/{skill-name}/   # Mirror of skills/{skill-name}
 ├── docs/                    # GitHub Pages site
 │   ├── index.html           # Main landing page
 │   ├── skills/              # Individual skill documentation
 │   │   └── {skill-name}.html
 │   └── downloads/           # ZIP files for download
-├── plugin/                  # Claude Code plugin package
-└── .claude-plugin/          # Plugin marketplace config
+├── plugin/                  # The installer plugin package
+├── scripts/                 # Automation scripts
+│   └── sync-marketplace.sh  # Syncs skills/ → plugins/ + marketplace.json
+└── .claude-plugin/          # Plugin marketplace registry
+    └── marketplace.json
 ```
 
 ## Conventions for Adding New Skills
@@ -78,7 +85,16 @@ The `aviz-skills-installer` skill automatically fetches the skill list from the 
 1. Add the skill to `skills/`
 2. Create the documentation page in `docs/skills/`
 3. Update `docs/index.html` to list the new skill in the skills grid
-4. Commit and push - the installer will find it automatically!
+4. **Run marketplace sync before committing:**
+   ```bash
+   bash scripts/sync-marketplace.sh
+   ```
+   This syncs `skills/` → `plugins/`, creates plugin wrappers, and updates `.claude-plugin/marketplace.json`
+5. Commit and push - the installer will find it automatically!
+
+## Deployment Rule
+
+**ALWAYS run `bash scripts/sync-marketplace.sh` before committing any skill changes.** This ensures the plugin marketplace stays in sync with the skills directory.
 
 ## Updating Downloads
 

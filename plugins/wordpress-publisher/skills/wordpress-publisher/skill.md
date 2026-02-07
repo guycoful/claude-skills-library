@@ -18,6 +18,19 @@ setup: "./SETUP.md"
 
 Publish content to WordPress with a two-step flow: draft first, then publish after user confirmation.
 
+## Default Language: Hebrew
+
+**IMPORTANT:** Unless the user explicitly requests English or another language, create all blog posts in Hebrew with RTL formatting. Also generate images using the `image-generation` skill for:
+- Featured/hero image for the post
+- Internal images to illustrate concepts (instead of ASCII diagrams)
+
+Always wrap Hebrew content in:
+```html
+<article dir="rtl" lang="he">
+  <!-- Hebrew content here -->
+</article>
+```
+
 ## Configuration
 
 Create `.env` file in the skill directory:

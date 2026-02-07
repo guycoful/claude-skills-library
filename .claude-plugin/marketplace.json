@@ -130,6 +130,18 @@
       "source": "./plugins/zoom-meeting",
       "description": "Schedule Zoom meetings with calendar invites. Use when scheduling client calls, consultations, or any video meeting. Tri",
       "version": "1.0.0"
+    },
+    {
+      "name": "find-my-project",
+      "source": "./plugins/find-my-project",
+      "description": "Helps beginners find their first agentic project through pain point identification. Guides through questioning, analysis, project suggestion, and setup.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "learn",
+      "source": "./plugins/learn",
+      "description": "Teach Claude ANY topic - code libraries, APIs, concepts, tools, methodologies, or domains. Researches via web and docs, then retains knowledge as a permanent skill.",
+      "version": "1.1.0"
     }
   ]
 }
