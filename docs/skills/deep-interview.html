@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Interview - ראיון עומק אדפטיבי</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-primary: #22C55E;
+      --green-glow: rgba(34, 197, 94, 0.4);
+      --green-soft: rgba(34, 197, 94, 0.1);
+      --bg-darkest: #0a0f0d;
+      --bg-dark: #111827;
+      --bg-card: #1a2332;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(34, 197, 94, 0.3);
+      --yellow: #fbbf24;
+      --red: #ef4444;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg-darkest);
+      color: var(--text-primary);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--green-primary); }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .skill-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+    }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--green-soft);
+      border-radius: 100px;
+      color: var(--green-primary);
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2 .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--green-primary);
+      border-radius: 50%;
+      font-size: 1rem;
+    }
+
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--green-primary);
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      background: var(--green-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--green-primary);
+      font-weight: 500;
+    }
+
+    .warning {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .warning-icon { font-size: 1.5rem; }
+    .warning p { margin: 0; color: var(--yellow); }
+
+    .info {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .info p { margin: 0; color: var(--blue); }
+
+    .purple-info {
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .purple-info p { margin: 0; color: var(--purple); }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps-list > li {
+      position: relative;
+      padding: 16px 0;
+      padding-inline-start: 48px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .steps-list > li:last-child { border-bottom: none; }
+
+    .steps-list > li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      inset-inline-start: 0;
+      top: 16px;
+      width: 28px;
+      height: 28px;
+      background: var(--bg-dark);
+      border: 2px solid var(--green-primary);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--green-primary);
+    }
+
+    code {
+      background: var(--bg-dark);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'Menlo', monospace;
+      font-size: 0.9rem;
+      color: var(--green-primary);
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .code-block {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .code-block code {
+      background: none;
+      padding: 0;
+      display: block;
+      white-space: pre;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: #6b7280; }
+    .code-block .key { color: var(--yellow); }
+    .code-block .value { color: var(--green-primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-primary) 0%, #16a34a 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--green-glow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .feature {
+      background: var(--bg-dark);
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .feature-icon { font-size: 2rem; margin-bottom: 8px; }
+    .feature-title { font-weight: 600; margin-bottom: 4px; }
+    .feature-desc { font-size: 0.85rem; color: var(--text-secondary); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    th {
+      background: var(--bg-dark);
+      font-weight: 600;
+    }
+
+    td code {
+      font-size: 0.8rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 48px;
+    }
+
+    footer a {
+      color: var(--green-primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">
+      -> חזרה לדף הראשי
+    </a>
+
+    <div class="hero">
+      <div class="skill-icon">🎤</div>
+      <h1>Deep Interview</h1>
+      <p class="subtitle">ראיון עומק אדפטיבי לחילוץ וארגון ידע</p>
+      <div class="difficulty">ללא התקנה נדרשת</div>
+    </div>
+
+    <!-- מה הסקיל עושה -->
+    <div class="section">
+      <h2>מה הסקיל הזה עושה?</h2>
+      <p>הסקיל מנהל <strong>ראיונות עומק אדפטיביים</strong> שמחלצים ידע מהמשתמש ומארגנים אותו בזמן אמת לקבצים ותיקיות מובנים. כמו לשבת עם יועץ שמקשיב, שואל, ומתעד הכל.</p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-title">שאלות ממוקדות</div>
+          <div class="feature-desc">שאלות אדפטיביות שמעמיקות עם כל תשובה</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📝</div>
+          <div class="feature-title">כתיבה בזמן אמת</div>
+          <div class="feature-desc">כל תשובה נשמרת מיד לקובץ</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🗂️</div>
+          <div class="feature-title">ארגון אוטומטי</div>
+          <div class="feature-desc">תיקיות ותת-תיקיות לפי נושאים</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📊</div>
+          <div class="feature-title">סיכום מסנתז</div>
+          <div class="feature-desc">סיכום כולל + שאלות פתוחות</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- איך זה עובד -->
+    <div class="section">
+      <h2><span class="num">1</span> איך זה עובד?</h2>
+
+      <p>לולאת הליבה של הסקיל:</p>
+
+      <div class="code-block">
+        <code>ASK -> LISTEN -> WRITE -> DEEPEN -> REPEAT</code>
+      </div>
+
+      <ol class="steps-list">
+        <li>
+          <strong>אתחול</strong>
+          <p>נוצרת תיקיית פלט עם קובץ אינדקס. ברירת מחדל: <code>~/Documents/interviews/&lt;topic&gt;-&lt;date&gt;/</code></p>
+        </li>
+
+        <li>
+          <strong>סבב פתיחה - הקשר רחב</strong>
+          <p>2-3 שאלות להבנת הנוף: מה הנושא, מה הניסיון שלך, מה המטרה?</p>
+        </li>
+
+        <li>
+          <strong>העמקה אדפטיבית</strong>
+          <p>זיהוי 3-7 נושאים מרכזיים. לכל נושא נשאלות שאלות ממוקדות והתשובות נכתבות לקובץ.</p>
+        </li>
+
+        <li>
+          <strong>סינתזה וסגירה</strong>
+          <p>עדכון אינדקס, יצירת סיכום כולל, רשימת שאלות פתוחות.</p>
+        </li>
+      </ol>
+
+      <div class="purple-info">
+        <span class="warning-icon">🎤</span>
+        <p><strong>אדפטיבי:</strong> הסקיל מתאים את השאלות בהתאם לתשובות שלך. תשובות קצרות = שאלות המשך. תשובות מפורטות = ממשיכים הלאה.</p>
+      </div>
+    </div>
+
+    <!-- שימוש -->
+    <div class="section">
+      <h2><span class="num">2</span> איך להשתמש?</h2>
+
+      <p>פשוט תבקשו מקלוד לראיין אתכם:</p>
+
+      <div class="code-block">
+        <code><span class="comment"># ראיון בסיסי</span>
+/deep-interview תחום הליבה של העסק שלי
+
+<span class="comment"># עם נתיב פלט מותאם</span>
+/deep-interview מתודולוגיית העבודה שלי --output ~/sb/methodology
+
+<span class="comment"># עומק מותאם</span>
+/deep-interview ידע מקצועי באדריכלות --depth deep</code>
+      </div>
+
+      <h3>דוגמאות לשימוש</h3>
+      <div class="code-block">
+        <code><span class="comment"># חילוץ ידע עסקי</span>
+"ראיין אותי על המוצר שלי"
+"interview me about my sales process"
+
+<span class="comment"># בניית בסיס ידע</span>
+"build knowledge base from interview about architecture"
+"תחלץ את הידע שלי על ניהול פרויקטים"
+
+<span class="comment"># תיעוד מומחיות</span>
+"ask me questions about my cooking techniques"
+"deep interview על שיטת ההדרכה שלי"</code>
+      </div>
+
+      <h3>פרמטרים</h3>
+      <table>
+        <tr>
+          <th>פרמטר</th>
+          <th>תיאור</th>
+          <th>דוגמה</th>
+        </tr>
+        <tr>
+          <td><code>&lt;topic&gt;</code></td>
+          <td>הנושא לראיון</td>
+          <td><code>/deep-interview sales process</code></td>
+        </tr>
+        <tr>
+          <td><code>--output &lt;path&gt;</code></td>
+          <td>נתיב פלט מותאם</td>
+          <td><code>--output ~/sb/sales</code></td>
+        </tr>
+        <tr>
+          <td><code>--depth</code></td>
+          <td>עומק: shallow / medium / deep</td>
+          <td><code>--depth deep</code></td>
+        </tr>
+      </table>
+
+      <h3>רמות עומק</h3>
+      <table>
+        <tr>
+          <th>עומק</th>
+          <th>שאלות לנושא</th>
+          <th>סבבים</th>
+          <th>קבצים</th>
+        </tr>
+        <tr>
+          <td><code>shallow</code></td>
+          <td>2-3</td>
+          <td>3-5</td>
+          <td>5-10</td>
+        </tr>
+        <tr>
+          <td><code>medium</code> (ברירת מחדל)</td>
+          <td>4-6</td>
+          <td>6-10</td>
+          <td>10-20</td>
+        </tr>
+        <tr>
+          <td><code>deep</code></td>
+          <td>8-12</td>
+          <td>12-20</td>
+          <td>20-40</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- מה נוצר -->
+    <div class="section">
+      <h2><span class="num">3</span> מה נוצר?</h2>
+
+      <p>הסקיל יוצר מבנה תיקיות מאורגן:</p>
+
+      <div class="code-block">
+        <code>interviews/my-topic-2026-02-15/
+├── _interview-index.md    <span class="comment"># תוכן עניינים</span>
+├── _summary.md            <span class="comment"># סיכום מסנתז</span>
+├── _open-questions.md     <span class="comment"># שאלות פתוחות</span>
+├── overview.md            <span class="comment"># סקירה כללית</span>
+├── target-audience.md     <span class="comment"># נושא פשוט</span>
+├── pricing-strategy.md    <span class="comment"># נושא נוסף</span>
+└── sales-process/         <span class="comment"># נושא מורכב - תיקייה</span>
+    ├── _index.md
+    ├── lead-generation.md
+    └── closing-techniques.md</code>
+      </div>
+
+      <div class="info">
+        <span class="warning-icon">💡</span>
+        <p><strong>כתיבה אינקרמנטלית:</strong> הקבצים נכתבים תוך כדי הראיון, לא בסוף. כל תשובה נשמרת מיד.</p>
+      </div>
+    </div>
+
+    <!-- טכניקות שאילה -->
+    <div class="section">
+      <h2><span class="num">4</span> טכניקות השאלה</h2>
+
+      <p>הסקיל משתמש במגוון סוגי שאלות כדי לחלץ שכבות שונות של ידע:</p>
+
+      <table>
+        <tr>
+          <th>סוג שאלה</th>
+          <th>מה מחלץ</th>
+          <th>דוגמה</th>
+        </tr>
+        <tr>
+          <td><strong>מה</strong></td>
+          <td>עובדות, הגדרות</td>
+          <td>מהם המרכיבים העיקריים?</td>
+        </tr>
+        <tr>
+          <td><strong>איך</strong></td>
+          <td>תהליכים, שיטות</td>
+          <td>איך נראה התהליך צעד אחרי צעד?</td>
+        </tr>
+        <tr>
+          <td><strong>למה</strong></td>
+          <td>היגיון, פילוסופיה</td>
+          <td>למה בחרת בגישה הזו?</td>
+        </tr>
+        <tr>
+          <td><strong>מה אם</strong></td>
+          <td>מקרי קצה, כשלים</td>
+          <td>מה קורה כשזה לא עובד?</td>
+        </tr>
+        <tr>
+          <td><strong>דרג</strong></td>
+          <td>סדרי עדיפויות</td>
+          <td>בחר 3 העקרונות החשובים ביותר</td>
+        </tr>
+        <tr>
+          <td><strong>השווה</strong></td>
+          <td>הבדלים, ייחודיות</td>
+          <td>במה השיטה שלך שונה מאחרות?</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- דוגמה מלאה -->
+    <div class="section">
+      <h2>דוגמה מלאה</h2>
+
+      <div class="code-block">
+        <code><span class="comment"># המשתמש מבקש:</span>
+/deep-interview the methodology behind my coaching business
+
+<span class="comment"># קלוד:</span>
+1. יוצר תיקייה: ~/Documents/interviews/coaching-methodology-2026-02-15/
+2. שואל: מה סוג האימון? מי קהל היעד? מה המטרה של התיעוד?
+
+3. מזהה נושאים:
+   - פילוסופיית אימון
+   - תהליך קליטת לקוח
+   - כלים ושיטות
+   - מדדי הצלחה
+   - אתגרים נפוצים
+
+4. לכל נושא: שאלות ממוקדות -> כתיבה לקובץ -> העמקה
+
+5. בסיום:
+   "סיימנו! נוצרו 18 קבצים ב-5 תיקיות.
+    סיכום ב-_summary.md, 3 שאלות פתוחות ב-_open-questions.md"</code>
+      </div>
+    </div>
+
+    <!-- טיפים -->
+    <div class="section">
+      <h2>טיפים לראיון מוצלח</h2>
+
+      <ul style="color: var(--text-secondary); padding-right: 20px;">
+        <li>תנו תשובות מפורטות - ככל שתרחיבו, כך הידע שנשמר יהיה עשיר יותר</li>
+        <li>אל תפחדו לומר "אני לא בטוח" - זה יירשם כשאלה פתוחה</li>
+        <li>השתמשו ב-<code>--depth deep</code> לנושאים מורכבים שיש בהם הרבה ידע</li>
+        <li>הפלט מושלם כבסיס ידע, תיעוד, או חומר גלם למצגות וקורסים</li>
+      </ul>
+
+      <div class="warning">
+        <span class="warning-icon">⚠️</span>
+        <p><strong>שימו לב:</strong> הקבצים נשמרים ב-<code>~/Documents/</code> כברירת מחדל. אם אתם רוצים שהם יישמרו במקום אחר, השתמשו ב-<code>--output</code>.</p>
+      </div>
+    </div>
+
+    <div class="cta-buttons" style="justify-content: center; margin-top: 48px;">
+      <a href="../index.html" class="btn btn-secondary">-> חזרה לדף הראשי</a>
+      <a href="https://github.com/aviz85/claude-skills-library/tree/main/skills/deep-interview" target="_blank" class="btn btn-primary">קוד מלא ב-GitHub</a>
+    </div>
+
+    <footer>
+      <p>יש שאלות? פתחו Issue ב-<a href="https://github.com/aviz85/claude-skills-library" target="_blank">GitHub</a></p>
+    </footer>
+  </div>
+</body>
+</html>

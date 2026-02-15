@@ -43,9 +43,9 @@ for skill_dir in "$SKILLS_DIR"/*/; do
         mkdir -p "$plugin_skills"
 
         # Extract description from SKILL.md frontmatter
-        desc=$(sed -n '/^---$/,/^---$/{ /^description:/{ s/^description: *//; s/^"//; s/"$//; p; } }' "$skill_dir/SKILL.md" | head -1)
+        desc=$(awk '/^---$/{n++; next} n==1 && /^description:/{sub(/^description: */, ""); sub(/^"/, ""); sub(/"$/, ""); print; exit}' "$skill_dir/SKILL.md")
         # Extract version from SKILL.md frontmatter (default 1.0.0)
-        version=$(sed -n '/^---$/,/^---$/{ /^version:/{ s/^version: *//; s/^"//; s/"$//; p; } }' "$skill_dir/SKILL.md" | head -1)
+        version=$(awk '/^---$/{n++; next} n==1 && /^version:/{sub(/^version: */, ""); sub(/^"/, ""); sub(/"$/, ""); print; exit}' "$skill_dir/SKILL.md")
         version=${version:-"1.0.0"}
 
         cat > "$plugin_json" <<EOF
@@ -85,8 +85,8 @@ EOF
         echo -e "${YELLOW}[REG]${NC} Adding to marketplace.json: $skill_name"
 
         # Extract description
-        desc=$(sed -n '/^---$/,/^---$/{ /^description:/{ s/^description: *//; s/^"//; s/"$//; p; } }' "$skill_dir/SKILL.md" | head -1)
-        version=$(sed -n '/^---$/,/^---$/{ /^version:/{ s/^version: *//; s/^"//; s/"$//; p; } }' "$skill_dir/SKILL.md" | head -1)
+        desc=$(awk '/^---$/{n++; next} n==1 && /^description:/{sub(/^description: */, ""); sub(/^"/, ""); sub(/"$/, ""); print; exit}' "$skill_dir/SKILL.md")
+        version=$(awk '/^---$/{n++; next} n==1 && /^version:/{sub(/^version: */, ""); sub(/^"/, ""); sub(/"$/, ""); print; exit}' "$skill_dir/SKILL.md")
         version=${version:-"1.0.0"}
 
         # Truncate description to 120 chars for marketplace

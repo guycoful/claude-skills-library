@@ -142,6 +142,12 @@
       "source": "./plugins/learn",
       "description": "Teach Claude ANY topic - code libraries, APIs, concepts, tools, methodologies, or domains. Researches via web and docs, then retains knowledge as a permanent skill.",
       "version": "1.1.0"
+    },
+    {
+      "name": "deep-interview",
+      "source": "./plugins/deep-interview",
+      "description": "Conduct deep adaptive interviews to extract and organize knowledge into structured files and folders. Use when user says",
+      "version": "1.0.0"
     }
   ]
 }
