@@ -67,7 +67,8 @@ Create a single `index.html` (or `slides.html`) with:
 
 **Navigation JS:**
 ```js
-// Arrow keys, click, touch - advance/retreat slides
+// Arrow keys: Right/Down = next, Left/Up = previous (standard, NOT RTL-flipped)
+// Click/touch also advances
 // Auto-scale to viewport
 ```
 
