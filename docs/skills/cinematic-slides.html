@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinematic Slides Skill - מדריך התקנה מפורט</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-primary: #22C55E;
+      --green-glow: rgba(34, 197, 94, 0.4);
+      --green-soft: rgba(34, 197, 94, 0.1);
+      --bg-darkest: #0a0f0d;
+      --bg-dark: #111827;
+      --bg-card: #1a2332;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(34, 197, 94, 0.3);
+      --yellow: #fbbf24;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg-darkest);
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--green-primary); }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .skill-icon { font-size: 4rem; margin-bottom: 16px; }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+    }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--green-soft);
+      border-radius: 100px;
+      color: var(--green-primary);
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2 .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--green-primary);
+      border-radius: 50%;
+      font-size: 1rem;
+    }
+
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--green-primary);
+    }
+
+    p { color: var(--text-secondary); margin-bottom: 16px; }
+
+    .highlight {
+      background: var(--green-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--green-primary);
+      font-weight: 500;
+    }
+
+    .warning {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .warning-icon { font-size: 1.5rem; }
+    .warning p { margin: 0; color: var(--yellow); }
+
+    .info {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .info p { margin: 0; color: var(--blue); }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps-list > li {
+      position: relative;
+      padding: 16px 0;
+      padding-inline-start: 48px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .steps-list > li:last-child { border-bottom: none; }
+
+    .steps-list > li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      inset-inline-start: 0;
+      top: 16px;
+      width: 28px;
+      height: 28px;
+      background: var(--bg-dark);
+      border: 2px solid var(--green-primary);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--green-primary);
+    }
+
+    code {
+      background: var(--bg-dark);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'Menlo', monospace;
+      font-size: 0.9rem;
+      color: var(--green-primary);
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .code-block {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .code-block code {
+      background: none;
+      padding: 0;
+      display: block;
+      white-space: pre;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: #6b7280; }
+    .code-block .key { color: var(--yellow); }
+    .code-block .value { color: var(--green-primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-primary) 0%, #16a34a 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--green-glow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-secondary:hover {
+      background: var(--green-soft);
+      border-color: var(--border-glow);
+    }
+
+    .btn-download {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-download:hover {
+      background: var(--green-soft);
+      color: var(--green-primary);
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .feature {
+      background: var(--bg-dark);
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .feature-icon { font-size: 2rem; margin-bottom: 8px; }
+    .feature-title { font-weight: 600; margin-bottom: 4px; }
+    .feature-desc { font-size: 0.85rem; color: var(--text-secondary); }
+
+    .pipeline-step {
+      background: var(--bg-dark);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 12px 0;
+      border-right: 4px solid var(--green-primary);
+    }
+
+    .pipeline-step h4 {
+      color: var(--green-primary);
+      margin-bottom: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    th { background: var(--bg-dark); font-weight: 600; }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 48px;
+    }
+
+    footer a { color: var(--green-primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">&#8594; חזרה לדף הראשי</a>
+
+    <div class="hero">
+      <div class="skill-icon">🎬</div>
+      <h1>Cinematic Slides</h1>
+      <p class="subtitle">מרעיון למצגת חיה עם רקע וידאו AI - Pipeline מלא</p>
+      <div class="difficulty">⏱️ זמן התקנה: 10-15 דקות</div>
+      <div class="cta-buttons" style="justify-content: center; margin-top: 24px;">
+        <button onclick="downloadSkill('cinematic-slides')" class="btn btn-download">
+          ⬇️ הורדת הסקיל
+        </button>
+      </div>
+    </div>
+
+    <!-- מה הסקיל עושה -->
+    <div class="section">
+      <h2>מה הסקיל הזה עושה?</h2>
+      <p>סקיל אורקסטרציה שמחבר בין מספר סקילים ליצירת מצגות סינמטיות עם רקע וידאו AI. מרעיון בודד - עד לינק חי באינטרנט.</p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">📝</div>
+          <div class="feature-title">מרעיון לתוכן</div>
+          <div class="feature-desc">כותב תוכן שקף-שקף עם כיוון ויזואלי</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎨</div>
+          <div class="feature-title">תמונות AI</div>
+          <div class="feature-desc">פוסטר ייחודי לכל שקף</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎥</div>
+          <div class="feature-title">וידאו AI</div>
+          <div class="feature-desc">רקע וידאו לופ מכל תמונה</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🌐</div>
+          <div class="feature-title">לינק חי</div>
+          <div class="feature-desc">מפורסם מיידית ל-GitHub Pages</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipeline -->
+    <div class="section">
+      <h2>ה-Pipeline המלא</h2>
+      <p>הסקיל עובד ב-6 שלבים, כל אחד משתמש בסקיל ייעודי:</p>
+
+      <div class="pipeline-step">
+        <h4>1. Content - presentation-architect</h4>
+        <p>יוצר תוכנית מצגת מפורטת: כותרות, תוכן, כיוון ויזואלי לכל שקף</p>
+      </div>
+
+      <div class="pipeline-step">
+        <h4>2. HTML - בניית מצגת</h4>
+        <p>HTML יחיד ב-1920x1080, ניווט מקלדת, תמיכה ב-RTL עברית</p>
+      </div>
+
+      <div class="pipeline-step">
+        <h4>3. Images - image-generation</h4>
+        <p>פוסטר AI לכל שקף (Gemini/FLUX), כל התמונות במקביל</p>
+      </div>
+
+      <div class="pipeline-step">
+        <h4>4. Videos - image-generation (video)</h4>
+        <p>Grok Imagine Video - ממיר כל תמונה לוידאו לופ. מצלמה סטטית בלבד!</p>
+      </div>
+
+      <div class="pipeline-step">
+        <h4>5. Deploy - gh-pages-deploy</h4>
+        <p>מפרסם הכל ל-GitHub Pages עם URL חי</p>
+      </div>
+
+      <div class="pipeline-step">
+        <h4>6. Share - whatsapp (אופציונלי)</h4>
+        <p>שולח את הלינק בוואטסאפ</p>
+      </div>
+    </div>
+
+    <!-- דרישות מקדימות -->
+    <div class="section">
+      <h2><span class="num">1</span> מה צריך לפני שמתחילים?</h2>
+
+      <h3>סקילים נדרשים</h3>
+      <p>הסקיל הזה הוא <span class="highlight">אורקסטרטור</span> - הוא מפעיל סקילים אחרים. צריך שיהיו מותקנים:</p>
+
+      <table>
+        <tr><th>סקיל</th><th>מטרה</th><th>API נדרש</th></tr>
+        <tr><td><code>presentation-architect</code></td><td>כתיבת תוכן</td><td>-</td></tr>
+        <tr><td><code>image-generation</code></td><td>תמונות + וידאו</td><td>Gemini + xAI Grok</td></tr>
+        <tr><td><code>gh-pages-deploy</code></td><td>פרסום</td><td>GitHub CLI</td></tr>
+        <tr><td><code>whatsapp</code></td><td>שיתוף (אופציונלי)</td><td>Green API</td></tr>
+      </table>
+
+      <h3>מפתחות API</h3>
+      <p>בקובץ <code>~/.claude/skills/image-generation/scripts/.env</code>:</p>
+      <div class="code-block">
+        <code><span class="key">GEMINI_API_KEY</span>=<span class="value">your_gemini_key</span>
+<span class="key">XAI_API_KEY</span>=<span class="value">your_xai_key</span>
+<span class="key">FAL_KEY</span>=<span class="value">your_fal_key</span> <span class="comment"># אופציונלי - למצב cheap</span></code>
+      </div>
+    </div>
+
+    <!-- קבלת API Keys -->
+    <div class="section">
+      <h2><span class="num">2</span> קבלת מפתחות API</h2>
+
+      <h3>Gemini API (לתמונות)</h3>
+      <ol class="steps-list">
+        <li>
+          <strong>היכנסו ל-Google AI Studio</strong>
+          <p>לחצו על:</p>
+          <a href="https://aistudio.google.com/apikey" target="_blank" class="btn btn-primary" style="margin-top: 8px;">
+            🌐 Google AI Studio
+          </a>
+        </li>
+        <li>
+          <strong>צרו מפתח API</strong>
+          <p>לחצו "Create API Key" והעתיקו.</p>
+        </li>
+      </ol>
+
+      <h3>xAI Grok API (לוידאו)</h3>
+      <ol class="steps-list">
+        <li>
+          <strong>היכנסו לקונסול xAI</strong>
+          <a href="https://console.x.ai/team/default/api-keys" target="_blank" class="btn btn-primary" style="margin-top: 8px;">
+            🌐 xAI Console
+          </a>
+        </li>
+        <li>
+          <strong>צרו מפתח API</strong>
+          <p>מקבלים $25 קרדיט חינם להתחלה!</p>
+        </li>
+      </ol>
+
+      <h3>GitHub CLI</h3>
+      <ol class="steps-list">
+        <li>
+          <strong>התקינו gh</strong>
+          <div class="code-block">
+            <code>brew install gh
+gh auth login</code>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- הגדרה -->
+    <div class="section">
+      <h2><span class="num">3</span> הגדרת הסקיל</h2>
+
+      <p>אחרי שהתקנתם את כל הסקילים הנדרשים ויש לכם את ה-API keys:</p>
+
+      <div class="code-block">
+        <code><span class="comment"># בקשו מקלוד:</span>
+התקן את הסקיל cinematic-slides מספריית הסקילים</code>
+      </div>
+
+      <p>או ידנית:</p>
+      <div class="code-block">
+        <code><span class="comment"># הורידו את הסקיל לתיקייה הנכונה</span>
+cp -r cinematic-slides ~/.claude/skills/cinematic-slides</code>
+      </div>
+    </div>
+
+    <!-- שימוש -->
+    <div class="section">
+      <h2><span class="num">4</span> איך משתמשים?</h2>
+
+      <div class="code-block">
+        <code><span class="comment"># פשוט אמרו לקלוד:</span>
+"צור לי מצגת סינמטית על [הנושא שלך]"
+
+<span class="comment"># או יותר מפורט:</span>
+"צור מצגת סינמטית של 10 שקפים על הטירוף של סוכני AI,
+קהל: מרצים ומפתחים, בעברית"
+
+<span class="comment"># קלוד יעשה הכל אוטומטית:</span>
+<span class="comment"># 1. יכתוב תוכן לכל שקף</span>
+<span class="comment"># 2. יבנה HTML מצגת</span>
+<span class="comment"># 3. ייצר תמונות AI (במקביל)</span>
+<span class="comment"># 4. ייצר וידאו AI מכל תמונה (במקביל)</span>
+<span class="comment"># 5. יפרסם ל-GitHub Pages</span>
+<span class="comment"># 6. ישלח לכם את הלינק</span></code>
+      </div>
+    </div>
+
+    <!-- כללים חשובים -->
+    <div class="section">
+      <h2>כללים חשובים לוידאו</h2>
+
+      <div class="warning">
+        <span class="warning-icon">📹</span>
+        <p><strong>מצלמה סטטית תמיד!</strong> כל הוידאו נוצר עם "rock steady tripod, static camera" - בלי תזוזות מצלמה שמסיחות את הדעת.</p>
+      </div>
+
+      <table>
+        <tr><th>פרמטר</th><th>ערך</th><th>הסבר</th></tr>
+        <tr><td>Camera</td><td>Static</td><td>ללא תנועה - מצלמה קבועה</td></tr>
+        <tr><td>Opacity</td><td>0.25</td><td>כהה מספיק לקריאות טקסט</td></tr>
+        <tr><td>Loop</td><td>Infinite</td><td>autoplay muted loop</td></tr>
+        <tr><td>Effects</td><td>Ambient only</td><td>אור, חלקיקים, נצנוץ עדין</td></tr>
+        <tr><td>Fallback</td><td>Gradient + Image</td><td>תמונה סטטית בזמן טעינה</td></tr>
+      </table>
+    </div>
+
+    <!-- דוגמה חיה -->
+    <div class="section" style="border: 2px solid var(--green-primary);">
+      <h2>דוגמה חיה</h2>
+      <p>מצגת "Phase Shift" - 10 שקפים עם רקע וידאו AI:</p>
+      <div class="cta-buttons">
+        <a href="https://aviz85.github.io/phase-shift-slides/" target="_blank" class="btn btn-primary">
+          🌐 צפו במצגת החיה
+        </a>
+      </div>
+    </div>
+
+    <div class="cta-buttons" style="justify-content: center; margin-top: 48px;">
+      <a href="../index.html" class="btn btn-secondary">&larr; חזרה לדף הראשי</a>
+    </div>
+
+    <footer>
+      <p>יש שאלות? פתחו Issue ב-<a href="https://github.com/aviz85/claude-skills-library" target="_blank">GitHub</a></p>
+    </footer>
+  </div>
+
+  <script>
+    function downloadSkill(skillName) {
+      const downloadUrl = `../downloads/${skillName}.zip`;
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = `${skillName}.zip`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

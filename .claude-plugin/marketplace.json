@@ -148,6 +148,12 @@
       "source": "./plugins/deep-interview",
       "description": "Conduct deep adaptive interviews to extract and organize knowledge into structured files and folders. Use when user says",
       "version": "1.0.0"
+    },
+    {
+      "name": "cinematic-slides",
+      "source": "./plugins/cinematic-slides",
+      "description": "Create cinematic HTML presentations with AI video backgrounds, deployed to GitHub Pages. Use for: slides, presentation, ",
+      "version": "1.0.0"
     }
   ]
 }
