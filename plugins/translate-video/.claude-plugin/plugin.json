@@ -1,0 +1,13 @@
+{
+  "name": "translate-video",
+  "version": "1.0.0",
+  "description": "Translate video subtitles to any language with native-quality refinement. Full pipeline: transcribe → translate → refine → embed RTL-safe subtitles. Use for: translate video, תרגם סרטון, video translation, foreign subtitles, Hebrew subtitles, translated captions.",
+  "author": {
+    "name": "aviz",
+    "url": "https://github.com/aviz85"
+  },
+  "homepage": "https://aviz.github.io/claude-skills-library/skills/translate-video.html",
+  "repository": "https://github.com/aviz85/claude-skills-library",
+  "license": "MIT",
+  "skills": "./skills/"
+}

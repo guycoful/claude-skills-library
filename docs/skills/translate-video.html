@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Translate Video Skill - תרגום סרטונים עם כתוביות</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-primary: #22C55E;
+      --green-glow: rgba(34, 197, 94, 0.4);
+      --green-soft: rgba(34, 197, 94, 0.1);
+      --bg-darkest: #0a0f0d;
+      --bg-dark: #111827;
+      --bg-card: #1a2332;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(34, 197, 94, 0.3);
+      --yellow: #fbbf24;
+      --red: #ef4444;
+      --blue: #3b82f6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg-darkest);
+      color: var(--text-primary);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--green-primary); }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .skill-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+    }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--green-soft);
+      border-radius: 100px;
+      color: var(--green-primary);
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2 .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--green-primary);
+      border-radius: 50%;
+      font-size: 1rem;
+    }
+
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--green-primary);
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      background: var(--green-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--green-primary);
+      font-weight: 500;
+    }
+
+    .warning {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .warning-icon { font-size: 1.5rem; }
+    .warning p { margin: 0; color: var(--yellow); }
+
+    .info {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .info p { margin: 0; color: var(--blue); }
+
+    .success {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .success p { margin: 0; color: var(--green-primary); }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps-list > li {
+      position: relative;
+      padding: 16px 0;
+      padding-inline-start: 48px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .steps-list > li:last-child { border-bottom: none; }
+
+    .steps-list > li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      inset-inline-start: 0;
+      top: 16px;
+      width: 28px;
+      height: 28px;
+      background: var(--bg-dark);
+      border: 2px solid var(--green-primary);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--green-primary);
+    }
+
+    code {
+      background: var(--bg-dark);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'Menlo', monospace;
+      font-size: 0.9rem;
+      color: var(--green-primary);
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .code-block {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .code-block code {
+      background: none;
+      padding: 0;
+      display: block;
+      white-space: pre;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: var(--text-muted, #6b7280); }
+    .code-block .key { color: var(--yellow); }
+    .code-block .value { color: var(--green-primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-primary) 0%, #16a34a 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--green-glow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .feature {
+      background: var(--bg-dark);
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .feature-icon { font-size: 2rem; margin-bottom: 8px; }
+    .feature-title { font-weight: 600; margin-bottom: 4px; }
+    .feature-desc { font-size: 0.85rem; color: var(--text-secondary); }
+
+    .pipeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 24px 0;
+    }
+
+    .pipeline-step {
+      background: var(--bg-dark);
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .pipeline-arrow {
+      color: var(--green-primary);
+      font-size: 1.2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    th {
+      background: var(--bg-dark);
+      font-weight: 600;
+    }
+
+    td code {
+      font-size: 0.8rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 48px;
+    }
+
+    footer a {
+      color: var(--green-primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">
+      -> חזרה לדף הראשי
+    </a>
+
+    <div class="hero">
+      <div class="skill-icon">🌐</div>
+      <h1>Translate Video</h1>
+      <p class="subtitle">תרגמו סרטונים לכל שפה עם כתוביות איכותיות ברמת דובר שפת אם</p>
+      <div class="difficulty">⏱️ זמן התקנה: 5 דקות (אם יש כבר transcribe)</div>
+    </div>
+
+    <!-- מה הסקיל עושה -->
+    <div class="section">
+      <h2>מה הסקיל הזה עושה?</h2>
+      <p>צינור שלם מקצה לקצה: מקבל סרטון, מתמלל, מתרגם, משפר את התרגום לרמת דובר שפת אם, מתקן בעיות כיוון כתיבה RTL, ושורף את הכתוביות על הסרטון. הכל אוטומטי.</p>
+
+      <div class="pipeline">
+        <span class="pipeline-step">🎬 סרטון</span>
+        <span class="pipeline-arrow">←</span>
+        <span class="pipeline-step">📝 תמלול</span>
+        <span class="pipeline-arrow">←</span>
+        <span class="pipeline-step">🌐 תרגום</span>
+        <span class="pipeline-arrow">←</span>
+        <span class="pipeline-step">✨ שיפור</span>
+        <span class="pipeline-arrow">←</span>
+        <span class="pipeline-step">🔤 RTL</span>
+        <span class="pipeline-arrow">←</span>
+        <span class="pipeline-step">🎥 הטמעה</span>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🌐</div>
+          <div class="feature-title">כל שפה</div>
+          <div class="feature-desc">עברית, ערבית, ספרדית, צרפתית, גרמנית ועוד</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔤</div>
+          <div class="feature-title">תיקון RTL</div>
+          <div class="feature-desc">פתרון אוטומטי לבעיות כיוון כתיבה בעברית וערבית</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✨</div>
+          <div class="feature-title">איכות דובר-אם</div>
+          <div class="feature-desc">לא תרגום מכונה - שיפור סמנטי לטקסט טבעי</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📝</div>
+          <div class="feature-title">קיבוץ חכם</div>
+          <div class="feature-desc">מאות פרגמנטים הופכים למשפטים שלמים וקריאים</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- הבעיה שנפתרה -->
+    <div class="section" style="border: 2px solid var(--green-primary);">
+      <h2>🎯 הבעיה שנפתרה: כיוון כתיבה RTL</h2>
+      <p>אחד האתגרים הכי מעיקים בהטמעת כתוביות בעברית הוא כיוון הכתיבה. כשיש מילים באנגלית (כמו שמות מוצרים), נקודות ופסיקים - הכל מתבלבל.</p>
+
+      <h3>הפתרון</h3>
+      <p>הוספת Unicode marks אוטומטית לכל שורת טקסט בקובץ SRT:</p>
+      <ul style="color: var(--text-secondary); padding-right: 20px; margin-bottom: 16px;">
+        <li><strong>U+202B</strong> (RLE) - מכריח כיוון RTL לפסקה</li>
+        <li><strong>U+202C</strong> (PDF) - סוגר את ה-embedding</li>
+      </ul>
+
+      <div class="success">
+        <span class="warning-icon">✅</span>
+        <p><strong>התוצאה:</strong> כתוביות בעברית שנראות מושלם - גם עם מילים באנגלית, מספרים, ופיסוק מעורב.</p>
+      </div>
+    </div>
+
+    <!-- דרישות מקדימות -->
+    <div class="section">
+      <h2><span class="num">1</span> מה צריך לפני שמתחילים?</h2>
+
+      <h3>סקילים נדרשים</h3>
+      <table>
+        <tr>
+          <th>סקיל</th>
+          <th>תפקיד</th>
+          <th>התקנה</th>
+        </tr>
+        <tr>
+          <td><code>transcribe</code></td>
+          <td>תמלול אודיו/וידאו ל-SRT</td>
+          <td>דרך ה-Installer או העתקה ידנית</td>
+        </tr>
+        <tr>
+          <td><code>embed-subtitles</code></td>
+          <td>שריפת כתוביות על וידאו</td>
+          <td>דרך ה-Installer או העתקה ידנית</td>
+        </tr>
+      </table>
+
+      <h3>כלים נדרשים</h3>
+      <table>
+        <tr>
+          <th>כלי</th>
+          <th>תפקיד</th>
+          <th>התקנה</th>
+        </tr>
+        <tr>
+          <td><code>FFmpeg</code></td>
+          <td>עיבוד וידאו והטמעת כתוביות</td>
+          <td><code>brew install ffmpeg</code></td>
+        </tr>
+        <tr>
+          <td><code>Node.js</code></td>
+          <td>הרצת סקריפטי תמלול</td>
+          <td><code>brew install node</code></td>
+        </tr>
+        <tr>
+          <td><code>Python 3</code></td>
+          <td>תיקון RTL (סקריפט Unicode)</td>
+          <td>מותקן מראש ב-macOS</td>
+        </tr>
+      </table>
+
+      <h3>מפתחות API</h3>
+      <p>נדרש מפתח API של <span class="highlight">ElevenLabs</span> (לתמלול). מוגדר בסקיל <code>transcribe</code>.</p>
+
+      <div class="info">
+        <span class="warning-icon">💡</span>
+        <p><strong>טיפ:</strong> אם כבר יש לכם את סקיל <code>transcribe</code> מותקן ועובד - אתם מוכנים! הסקיל הזה לא דורש שום API נוסף.</p>
+      </div>
+    </div>
+
+    <!-- התקנה -->
+    <div class="section">
+      <h2><span class="num">2</span> התקנה</h2>
+
+      <ol class="steps-list">
+        <li>
+          <strong>העתיקו את תיקיית הסקיל</strong>
+          <div class="code-block">
+            <code><span class="comment"># אם התקנתם דרך ה-Installer, הסקיל כבר שם!</span>
+<span class="comment"># אחרת, העתיקו ידנית:</span>
+cp -r skills/translate-video ~/.claude/skills/translate-video</code>
+          </div>
+        </li>
+
+        <li>
+          <strong>וודאו שסקיל transcribe מותקן</strong>
+          <div class="code-block">
+            <code>ls ~/.claude/skills/transcribe/SKILL.md</code>
+          </div>
+        </li>
+
+        <li>
+          <strong>וודאו שסקיל embed-subtitles מותקן</strong>
+          <div class="code-block">
+            <code>ls ~/.claude/skills/embed-subtitles/SKILL.md</code>
+          </div>
+        </li>
+
+        <li>
+          <strong>וודאו ש-FFmpeg מותקן</strong>
+          <div class="code-block">
+            <code>ffmpeg -version</code>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- שימוש -->
+    <div class="section">
+      <h2><span class="num">3</span> שימוש</h2>
+
+      <p>פתחו את קלוד קוד ואמרו:</p>
+
+      <div class="code-block">
+        <code><span class="comment"># תרגום לעברית (ברירת מחדל)</span>
+/translate-video ~/Desktop/video.mp4
+
+<span class="comment"># תרגום לעברית (מפורש)</span>
+/translate-video ~/Desktop/video.mp4 he
+
+<span class="comment"># תרגום לערבית</span>
+/translate-video ~/Desktop/video.mp4 ar
+
+<span class="comment"># תרגום לספרדית</span>
+/translate-video ~/Desktop/video.mp4 es</code>
+      </div>
+
+      <h3>שפות נתמכות</h3>
+      <table>
+        <tr><th>קוד</th><th>שפה</th><th>RTL?</th></tr>
+        <tr><td><code>he</code></td><td>עברית</td><td>כן - תיקון אוטומטי</td></tr>
+        <tr><td><code>ar</code></td><td>ערבית</td><td>כן - תיקון אוטומטי</td></tr>
+        <tr><td><code>fa</code></td><td>פרסית</td><td>כן - תיקון אוטומטי</td></tr>
+        <tr><td><code>en</code></td><td>אנגלית</td><td>לא</td></tr>
+        <tr><td><code>es</code></td><td>ספרדית</td><td>לא</td></tr>
+        <tr><td><code>fr</code></td><td>צרפתית</td><td>לא</td></tr>
+        <tr><td><code>de</code></td><td>גרמנית</td><td>לא</td></tr>
+        <tr><td><code>ru</code></td><td>רוסית</td><td>לא</td></tr>
+      </table>
+    </div>
+
+    <!-- קבצי פלט -->
+    <div class="section">
+      <h2><span class="num">4</span> קבצי פלט</h2>
+
+      <p>כל הקבצים נשמרים ליד הסרטון המקורי:</p>
+
+      <table>
+        <tr><th>קובץ</th><th>תיאור</th></tr>
+        <tr><td><code>{name}.srt</code></td><td>SRT בשפת המקור</td></tr>
+        <tr><td><code>{name}.md</code></td><td>תמליל קריא בשפת המקור</td></tr>
+        <tr><td><code>{name}_{lang}.srt</code></td><td>SRT מתורגם ומשופר (עם תיקון RTL אם רלוונטי)</td></tr>
+        <tr><td><code>{name}_{lang}_subtitled.mp4</code></td><td>הסרטון הסופי עם כתוביות שרופות</td></tr>
+      </table>
+    </div>
+
+    <!-- דוגמאות -->
+    <div class="section">
+      <h2>דוגמאות לשימוש</h2>
+
+      <div class="code-block">
+        <code><span class="comment"># תרגום סרטון יוטיוב שהורדתם</span>
+"תתרגם את הסרטון הזה לעברית ~/Desktop/tutorial.mp4"
+
+<span class="comment"># תרגום עם שפה ספציפית</span>
+"translate this video to Arabic ~/Desktop/lecture.mp4"
+
+<span class="comment"># אפשר גם בעברית</span>
+"תרגם סרטון ~/Desktop/keynote.mp4 לספרדית"</code>
+      </div>
+    </div>
+
+    <!-- פתרון בעיות -->
+    <div class="section">
+      <h2>🔧 פתרון בעיות נפוצות</h2>
+
+      <h3>הקובץ גדול מדי לתמלול</h3>
+      <ul style="color: var(--text-secondary); padding-right: 20px;">
+        <li>הסקיל מחלץ אוטומטית את האודיו לקובץ MP3 קטן יותר</li>
+        <li>אם עדיין נכשל, נסו לחלץ ידנית: <code>ffmpeg -i video.mp4 -vn -ab 64k audio.mp3</code></li>
+      </ul>
+
+      <h3>הכתוביות בכיוון הפוך</h3>
+      <ul style="color: var(--text-secondary); padding-right: 20px;">
+        <li>הסקיל מטפל בזה אוטומטית עם Unicode RTL marks</li>
+        <li>אם עדיין יש בעיה, וודאו שהקובץ נשמר ב-UTF-8</li>
+      </ul>
+
+      <h3>התרגום לא טבעי</h3>
+      <ul style="color: var(--text-secondary); padding-right: 20px;">
+        <li>הסקיל כולל שלב שיפור סמנטי שמבטיח טבעיות</li>
+        <li>אם צריך שינויים, ערכו את קובץ ה-SRT המתורגם והריצו רק את שלב ההטמעה</li>
+      </ul>
+    </div>
+
+    <div class="cta-buttons" style="justify-content: center; margin-top: 48px;">
+      <a href="../index.html" class="btn btn-secondary">← חזרה לדף הראשי</a>
+    </div>
+
+    <footer>
+      <p>יש שאלות? פתחו Issue ב-<a href="https://github.com/aviz85/claude-skills-library" target="_blank">GitHub</a></p>
+    </footer>
+  </div>
+</body>
+</html>

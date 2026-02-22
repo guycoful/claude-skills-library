@@ -154,6 +154,18 @@
       "source": "./plugins/cinematic-slides",
       "description": "Create cinematic HTML presentations with AI video backgrounds, deployed to GitHub Pages. Use for: slides, presentation, ",
       "version": "1.0.0"
+    },
+    {
+      "name": "embed-subtitles",
+      "source": "./plugins/embed-subtitles",
+      "description": "Burn subtitles onto videos using FFmpeg. Use for: hardcode subtitles, embed captions, video subtitling.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "translate-video",
+      "source": "./plugins/translate-video",
+      "description": "Translate video subtitles to any language with native-quality refinement. Full pipeline: transcribe → translate → refine",
+      "version": "1.0.0"
     }
   ]
 }
