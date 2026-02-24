@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Generation Skill - מדריך התקנה מפורט</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-primary: #22C55E;
+      --green-glow: rgba(34, 197, 94, 0.4);
+      --green-soft: rgba(34, 197, 94, 0.1);
+      --bg-darkest: #0a0f0d;
+      --bg-dark: #111827;
+      --bg-card: #1a2332;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(34, 197, 94, 0.3);
+      --yellow: #fbbf24;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg-darkest);
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--green-primary); }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .skill-icon { font-size: 4rem; margin-bottom: 16px; }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+    }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--green-soft);
+      border-radius: 100px;
+      color: var(--green-primary);
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2 .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--green-primary);
+      border-radius: 50%;
+      font-size: 1rem;
+    }
+
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--green-primary);
+    }
+
+    p { color: var(--text-secondary); margin-bottom: 16px; }
+
+    .highlight {
+      background: var(--green-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--green-primary);
+      font-weight: 500;
+    }
+
+    .warning {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .warning-icon { font-size: 1.5rem; }
+    .warning p { margin: 0; color: var(--yellow); }
+
+    .info {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .info p { margin: 0; color: var(--blue); }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps-list > li {
+      position: relative;
+      padding: 16px 0;
+      padding-inline-start: 48px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .steps-list > li:last-child { border-bottom: none; }
+
+    .steps-list > li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      inset-inline-start: 0;
+      top: 16px;
+      width: 28px;
+      height: 28px;
+      background: var(--bg-dark);
+      border: 2px solid var(--green-primary);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--green-primary);
+    }
+
+    code {
+      background: var(--bg-dark);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'Menlo', monospace;
+      font-size: 0.9rem;
+      color: var(--green-primary);
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .code-block {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .code-block code {
+      background: none;
+      padding: 0;
+      display: block;
+      white-space: pre;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: #6b7280; }
+    .code-block .key { color: var(--yellow); }
+    .code-block .value { color: var(--green-primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-primary) 0%, #16a34a 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--green-glow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-secondary:hover {
+      background: var(--green-soft);
+      border-color: var(--border-glow);
+    }
+
+    .btn-download {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-download:hover {
+      background: var(--green-soft);
+      color: var(--green-primary);
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .feature {
+      background: var(--bg-dark);
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .feature-icon { font-size: 2rem; margin-bottom: 8px; }
+    .feature-title { font-weight: 600; margin-bottom: 4px; }
+    .feature-desc { font-size: 0.85rem; color: var(--text-secondary); }
+
+    .pricing-note {
+      background: linear-gradient(135deg, var(--green-soft), transparent);
+      border: 1px solid var(--border-glow);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+
+    .pricing-note h3 { color: var(--text-primary); margin-bottom: 8px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    th { background: var(--bg-dark); font-weight: 600; }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 48px;
+    }
+
+    footer a { color: var(--green-primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">&#8594; חזרה לדף הראשי</a>
+
+    <div class="hero">
+      <div class="skill-icon">🖼️</div>
+      <h1>Image & Video Generation</h1>
+      <p class="subtitle">צרו תמונות ווידאו עם AI - Gemini, fal.ai, Grok</p>
+      <div class="difficulty">&#9201;️ זמן התקנה: 5-10 דקות</div>
+      <div class="cta-buttons" style="justify-content: center; margin-top: 24px;">
+        <button onclick="downloadSkill('image-generation')" class="btn btn-download">
+          &#11015;️ הורדת הסקיל
+        </button>
+      </div>
+    </div>
+
+    <!-- מה הסקיל עושה -->
+    <div class="section">
+      <h2>מה הסקיל הזה עושה?</h2>
+      <p>הסקיל מאפשר לקלוד ליצור תמונות ווידאו באיכות גבוהה. תמיכה מלאה בעברית ו-RTL, מצבי איכות שונים, ומספר ספקי AI.</p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🎨</div>
+          <div class="feature-title">תמונות Gemini</div>
+          <div class="feature-desc">איכות גבוהה, תמיכה בעברית מושלמת</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">מצב זול fal.ai</div>
+          <div class="feature-desc">~$0.003 לתמונה, מושלם לטיוטות</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎬</div>
+          <div class="feature-title">וידאו Grok</div>
+          <div class="feature-desc">עד 15 שניות, 720p, קולנועי</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔄</div>
+          <div class="feature-title">עריכת תמונות</div>
+          <div class="feature-desc">העלו תמונת מקור ובקשו שינויים</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ספקים -->
+    <div class="section">
+      <h2>ספקים ועלויות</h2>
+
+      <h3>יצירת תמונות</h3>
+      <table>
+        <tr><th>ספק</th><th>דגל</th><th>שימוש</th><th>עלות</th></tr>
+        <tr><td>Google Gemini</td><td>ברירת מחדל</td><td>איכות גבוהה, פרודקשן</td><td>Pay-as-you-go</td></tr>
+        <tr><td>fal.ai FLUX.2</td><td><code>--cheap</code></td><td>טיוטות, סושיאל, batch</td><td>~$0.003/תמונה</td></tr>
+      </table>
+
+      <h3>יצירת וידאו</h3>
+      <table>
+        <tr><th>ספק</th><th>דגל</th><th>איכות</th><th>משך</th></tr>
+        <tr><td>xAI Grok Imagine</td><td>ברירת מחדל</td><td>720p, קולנועי</td><td>1-15 שניות</td></tr>
+        <tr><td>fal.ai LTX-2</td><td><code>--cheap</code></td><td>~480p, מהיר</td><td>1-10 שניות</td></tr>
+      </table>
+    </div>
+
+    <!-- שלב 1: מפתח Gemini -->
+    <div class="section">
+      <h2><span class="num">1</span> יצירת מפתח API של Gemini (בתשלום)</h2>
+
+      <p>מינואר 2026 אפשר להגדיר חיוב <strong>ישירות מתוך Google AI Studio</strong> - בלי צורך ב-Google Cloud Console!</p>
+
+      <ol class="steps-list">
+        <li>
+          <strong>היכנסו ל-Google AI Studio</strong>
+          <p>גלשו לאתר:</p>
+          <a href="https://aistudio.google.com" target="_blank" class="btn btn-primary" style="margin-top: 8px;">
+            &#127760; פתחו את AI Studio
+          </a>
+        </li>
+
+        <li>
+          <strong>גשו לדף ה-API Keys</strong>
+          <p>בתפריט הצד לחצו על <span class="highlight">API Keys</span> או גלשו ישירות ל: <code>aistudio.google.com/apikey</code></p>
+        </li>
+
+        <li>
+          <strong>צרו מפתח API</strong>
+          <p>לחצו <span class="highlight">Create API Key</span>. המפתח נראה כמו: <code>AIzaSy...</code></p>
+        </li>
+
+        <li>
+          <strong>הפעילו חיוב (Billing)</strong>
+          <p>בעמודת <span class="highlight">Quota tier</span> ליד הפרויקט, לחצו על <span class="highlight">Set up Billing</span> או <span class="highlight">Upgrade</span>.</p>
+          <p>לחלופין: Dashboard &#8594; Usage and Billing &#8594; Billing tab.</p>
+        </li>
+
+        <li>
+          <strong>הזינו פרטי תשלום</strong>
+          <p>בחרו מדינה, הסכימו לתנאים, והוסיפו כרטיס אשראי עם כפתור ה-"+".</p>
+          <p>לחצו <span class="highlight">Finish account setup</span>.</p>
+        </li>
+
+        <li>
+          <strong>אישור תשלום מקדים (אם נדרש)</strong>
+          <p>גוגל עשויים לדרוש תשלום מקדים חד-פעמי ($5-$50) - זה <strong>לא תשלום</strong> אלא קרדיט שנכנס לחשבון שלכם לשימוש עתידי.</p>
+        </li>
+      </ol>
+
+      <div class="info">
+        <span class="warning-icon">&#128161;</span>
+        <p><strong>מה מקבלים?</strong> שדרוג מיידי ל-Tier 1 (150-300 בקשות לדקה), פרטיות מלאה (גוגל לא משתמשים בנתונים שלכם לאימון), וגישה למודלים בתשלום.</p>
+      </div>
+
+      <div class="pricing-note">
+        <h3>&#128176; תמחור Gemini (Pay-as-you-go)</h3>
+        <p>אין מנוי חודשי - משלמים רק על מה שמשתמשים:</p>
+        <table>
+          <tr><th>מודל</th><th>קלט (למיליון טוקנים)</th><th>פלט (למיליון טוקנים)</th></tr>
+          <tr><td>Gemini 2.5 Flash</td><td>$0.30</td><td>$2.50</td></tr>
+          <tr><td>Gemini 2.0 Flash</td><td>$0.10</td><td>$0.40</td></tr>
+        </table>
+        <p style="font-size: 0.85rem; margin-top: 8px;">* יצירת תמונות דרך Gemini Image model - עלות נמוכה ליצירה בודדת.</p>
+      </div>
+    </div>
+
+    <!-- שלב 2: fal.ai (אופציונלי) -->
+    <div class="section">
+      <h2><span class="num">2</span> מפתח fal.ai (אופציונלי - למצב זול)</h2>
+
+      <p>אם אתם רוצים גם את המצב הזול (~$0.003 לתמונה), תצטרכו מפתח fal.ai:</p>
+
+      <ol class="steps-list">
+        <li>
+          <strong>היכנסו ל-fal.ai</strong>
+          <a href="https://fal.ai" target="_blank" class="btn btn-primary" style="margin-top: 8px;">
+            &#127760; פתחו את fal.ai
+          </a>
+        </li>
+
+        <li>
+          <strong>צרו חשבון והיכנסו</strong>
+          <p>הירשמו עם GitHub או Google.</p>
+        </li>
+
+        <li>
+          <strong>צרו מפתח API</strong>
+          <p>גלשו ל-Dashboard &#8594; Keys &#8594; צרו מפתח חדש.</p>
+        </li>
+      </ol>
+    </div>
+
+    <!-- שלב 3: xAI (אופציונלי) -->
+    <div class="section">
+      <h2><span class="num">3</span> מפתח xAI Grok (אופציונלי - לוידאו)</h2>
+
+      <p>ליצירת וידאו באיכות גבוהה עם Grok Imagine Video:</p>
+
+      <ol class="steps-list">
+        <li>
+          <strong>היכנסו ל-xAI Console</strong>
+          <a href="https://console.x.ai" target="_blank" class="btn btn-primary" style="margin-top: 8px;">
+            &#127760; פתחו את xAI Console
+          </a>
+        </li>
+
+        <li>
+          <strong>צרו מפתח API</strong>
+          <p>גשו ל-API Keys &#8594; צרו מפתח חדש.</p>
+        </li>
+      </ol>
+    </div>
+
+    <!-- הערה על פרטיות -->
+    <div class="section" style="border: 2px solid var(--yellow); background: rgba(251, 191, 36, 0.05);">
+      <h2>&#9888;️ לפני שממשיכים - הגדרת פרטיות</h2>
+
+      <p>בשלב הבא תזינו מפתחות API. אלה כמו סיסמאות, ולכן <strong>חשוב לוודא שהגדרות הפרטיות מוגדרות נכון</strong> בקלוד קוד.</p>
+
+      <div class="warning">
+        <span class="warning-icon">&#128274;</span>
+        <p>אם עדיין לא עשיתם את זה, עברו קודם למדריך <a href="../index.html#privacy" style="color: var(--yellow);">הגדרות פרטיות</a> וודאו שכיביתם את האפשרות לאנתרופיק להתאמן על השיחות שלכם.</p>
+      </div>
+    </div>
+
+    <!-- שלב 4: הגדרה -->
+    <div class="section">
+      <h2><span class="num">4</span> הגדרת הסקיל במחשב</h2>
+
+      <p><strong>הכי קל - לבקש מקלוד קוד לעשות את זה בשבילכם!</strong></p>
+
+      <h3>&#129668; הדרך הקלה - בקשו מקלוד</h3>
+      <p>פתחו את קלוד קוד ואמרו לו:</p>
+      <div class="code-block">
+        <code>צור קובץ .env בתיקייה ~/.claude/skills/image-generation/scripts עם התוכן הבא:
+<span class="key">GEMINI_API_KEY</span>=<span class="value">המפתח_שהעתקתם_מ_AI_Studio</span>
+<span class="key">FAL_KEY</span>=<span class="value">המפתח_מ_fal_ai</span>
+<span class="key">XAI_API_KEY</span>=<span class="value">המפתח_מ_xAI</span></code>
+      </div>
+      <p>קלוד ייצור את הקובץ במקום הנכון!</p>
+      <p style="font-size: 0.9rem; color: var(--text-secondary);">* רק GEMINI_API_KEY נדרש. השאר אופציונלי לפי הספקים שתרצו להשתמש בהם.</p>
+
+      <h3>התקנת ספריות</h3>
+      <p>אחרי שהקובץ נוצר, בקשו מקלוד:</p>
+      <div class="code-block">
+        <code>הרץ npm install בתיקייה ~/.claude/skills/image-generation/scripts</code>
+      </div>
+    </div>
+
+    <!-- בדיקה -->
+    <div class="section">
+      <h2><span class="num">5</span> בדיקה שהכל עובד</h2>
+
+      <p>הפעילו מחדש את קלוד קוד ונסו:</p>
+
+      <div class="code-block">
+        <code><span class="comment"># בקשו מקלוד:</span>
+צור תמונה של עיר עתידנית בשקיעה</code>
+      </div>
+
+      <p>קלוד ייצור את התמונה ויפתח אותה. אם ראיתם תמונה - הכל עובד! &#127881;</p>
+    </div>
+
+    <!-- דוגמאות -->
+    <div class="section">
+      <h2>דוגמאות לשימוש</h2>
+
+      <h3>תמונות</h3>
+      <div class="code-block">
+        <code><span class="comment"># תמונה באיכות גבוהה (Gemini)</span>
+"צור תמונה של הרים בשלג עם אור זהב"
+
+<span class="comment"># תמונה זולה ומהירה (fal.ai)</span>
+"צור תמונה זולה של חתול על ספה"
+
+<span class="comment"># עם יחס גובה-רוחב</span>
+"צור תמונה אנכית לסטורי של קפה בוקר"
+
+<span class="comment"># עריכת תמונה קיימת</span>
+"קח את התמונה הזו והפוך אותה לציור שמן"
+
+<span class="comment"># תמונה עם טקסט עברי</span>
+"צור פוסטר עם הכיתוב: חג שמח"</code>
+      </div>
+
+      <h3>וידאו</h3>
+      <div class="code-block">
+        <code><span class="comment"># וידאו באיכות גבוהה (Grok)</span>
+"צור וידאו של גלים מתנפצים על סלעים"
+
+<span class="comment"># וידאו זול ומהיר (LTX-2)</span>
+"צור וידאו זול של עננים נעים"
+
+<span class="comment"># אנימציה של תמונה</span>
+"קח את התמונה הזו ותעשה ממנה וידאו עם תנועה עדינה"</code>
+      </div>
+    </div>
+
+    <!-- WOW Mode -->
+    <div class="section">
+      <h2>&#9889; מצב WOW</h2>
+      <p>רוצים אפקטים מטורפים? אמרו לקלוד <span class="highlight">"wow mode"</span> והוא יוסיף אפקטים קולנועיים: חלקיקים, פיצוצי אנרגיה, lens flares, ברקים ועוד.</p>
+
+      <div class="code-block">
+        <code>"צור תמונה wow mode של גיבור על שעומד על גג בניין"</code>
+      </div>
+    </div>
+
+    <!-- פתרון בעיות -->
+    <div class="section">
+      <h2>&#128295; פתרון בעיות נפוצות</h2>
+
+      <h3>שגיאת "GEMINI_API_KEY not found"</h3>
+      <ul style="color: var(--text-secondary); padding-right: 20px;">
+        <li>וודאו שיצרתם קובץ <code>.env</code> בתיקיית scripts</li>
+        <li>בדקו שהמפתח מתחיל ב-<code>AIzaSy</code></li>
+      </ul>
+
+      <h3>שגיאת Quota / Rate Limit</h3>
+      <ul style="color: var(--text-secondary); padding-right: 20px;">
+        <li>וודאו שהפעלתם חיוב (Billing) ב-AI Studio</li>
+        <li>בדקו את ה-Tier שלכם בדף ה-API Keys</li>
+      </ul>
+
+      <h3>טקסט עברי יוצא הפוך</h3>
+      <ul style="color: var(--text-secondary); padding-right: 20px;">
+        <li>קלוד מוסיף אוטומטית הנחיית RTL - אם זה לא עובד, בקשו ממנו להדגיש RTL בפרומפט</li>
+      </ul>
+
+      <h3>רוצים להשתמש רק ב-Gemini?</h3>
+      <ul style="color: var(--text-secondary); padding-right: 20px;">
+        <li>מספיק רק <code>GEMINI_API_KEY</code> בקובץ <code>.env</code></li>
+        <li>המפתחות האחרים נדרשים רק אם תשתמשו ב-<code>--cheap</code> (fal.ai) או וידאו (xAI)</li>
+      </ul>
+    </div>
+
+    <div class="cta-buttons" style="justify-content: center; margin-top: 48px;">
+      <a href="../index.html" class="btn btn-secondary">&#8592; חזרה לדף הראשי</a>
+      <a href="https://aistudio.google.com" target="_blank" class="btn btn-primary">&#127760; פתחו את AI Studio</a>
+    </div>
+
+    <footer>
+      <p>יש שאלות? פתחו Issue ב-<a href="https://github.com/aviz85/claude-skills-library" target="_blank">GitHub</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Download skill function - downloads pre-built ZIP from downloads folder
+    function downloadSkill(skillName) {
+      const downloadUrl = `../downloads/${skillName}.zip`;
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = `${skillName}.zip`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

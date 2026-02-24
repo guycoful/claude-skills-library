@@ -166,6 +166,12 @@
       "source": "./plugins/translate-video",
       "description": "Translate video subtitles to any language with native-quality refinement. Full pipeline: transcribe → translate → refine",
       "version": "1.0.0"
+    },
+    {
+      "name": "image-generation",
+      "source": "./plugins/image-generation",
+      "description": "Generate images with Gemini (default) or fal.ai FLUX.2 klein 4B (--cheap for fast/low-cost). Generate videos with Grok I",
+      "version": "1.0.0"
     }
   ]
 }
