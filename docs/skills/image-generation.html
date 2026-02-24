@@ -394,7 +394,7 @@
     <div class="section">
       <h2><span class="num">1</span> יצירת מפתח API של Gemini (בתשלום)</h2>
 
-      <p>מינואר 2026 אפשר להגדיר חיוב <strong>ישירות מתוך Google AI Studio</strong> - בלי צורך ב-Google Cloud Console!</p>
+      <p>אפשר להגדיר חיוב <strong>ישירות מתוך Google AI Studio</strong> - בלי צורך ב-Google Cloud Console! הכל קורה בממשק אחד.</p>
 
       <ol class="steps-list">
         <li>
@@ -407,35 +407,36 @@
 
         <li>
           <strong>גשו לדף ה-API Keys</strong>
-          <p>בתפריט הצד לחצו על <span class="highlight">API Keys</span> או גלשו ישירות ל: <code>aistudio.google.com/apikey</code></p>
+          <p>בתפריט הצד (&#9776;) לחצו על <span class="highlight">API keys</span> או גלשו ישירות ל: <code>aistudio.google.com/api-keys</code></p>
         </li>
 
         <li>
           <strong>צרו מפתח API</strong>
-          <p>לחצו <span class="highlight">Create API Key</span>. המפתח נראה כמו: <code>AIzaSy...</code></p>
+          <p>לחצו על <span class="highlight">Create API key</span> בפינה הימנית העליונה. המפתח נראה כמו: <code>AIzaSy...</code></p>
+          <p>למשתמשים חדשים - ייווצרו פרויקט ומפתח אוטומטית.</p>
         </li>
 
         <li>
-          <strong>הפעילו חיוב (Billing)</strong>
-          <p>בעמודת <span class="highlight">Quota tier</span> ליד הפרויקט, לחצו על <span class="highlight">Set up Billing</span> או <span class="highlight">Upgrade</span>.</p>
-          <p>לחלופין: Dashboard &#8594; Usage and Billing &#8594; Billing tab.</p>
+          <strong>הפעילו חיוב (Set up Billing)</strong>
+          <p>בטבלת המפתחות, מצאו את עמודת <span class="highlight">Quota tier</span>. ליד הפרויקט שלכם, לחצו על <span class="highlight">Set up Billing</span>.</p>
+          <p>אם כבר יש לכם חיוב ואתם רוצים לשדרג tier, תראו כפתור <span class="highlight">Upgrade</span> במקום.</p>
         </li>
 
         <li>
           <strong>הזינו פרטי תשלום</strong>
-          <p>בחרו מדינה, הסכימו לתנאים, והוסיפו כרטיס אשראי עם כפתור ה-"+".</p>
-          <p>לחצו <span class="highlight">Finish account setup</span>.</p>
+          <p><strong>משתמשים חדשים:</strong> בחלון שנפתח - בחרו מדינה, אשרו תנאים. אם אין לכם פרופיל תשלומים, לחצו על כפתור <span class="highlight">+</span> ליד "פרטי קשר" ו"אמצעי תשלום" כדי להוסיף כרטיס אשראי. לחצו <span class="highlight">Finish account setup</span>.</p>
+          <p><strong>משתמשים קיימים ב-Cloud:</strong> בחרו חשבון חיוב מהתפריט הנפתח ולחצו <span class="highlight">Finish setup</span>.</p>
         </li>
 
         <li>
-          <strong>אישור תשלום מקדים (אם נדרש)</strong>
-          <p>גוגל עשויים לדרוש תשלום מקדים חד-פעמי ($5-$50) - זה <strong>לא תשלום</strong> אלא קרדיט שנכנס לחשבון שלכם לשימוש עתידי.</p>
+          <strong>תשלום מקדים (לא תמיד נדרש)</strong>
+          <p>גוגל <strong>עשויים</strong> לדרוש תשלום מקדים חד-פעמי. זה <strong>לא חיוב</strong> - הסכום הופך לקרדיט בחשבון Cloud שלכם לשימוש עתידי. אם נדרש, תראו <span class="highlight">Action needed</span> בעמודת Quota tier - לחצו עליו כדי להשלים.</p>
         </li>
       </ol>
 
       <div class="info">
         <span class="warning-icon">&#128161;</span>
-        <p><strong>מה מקבלים?</strong> שדרוג מיידי ל-Tier 1 (150-300 בקשות לדקה), פרטיות מלאה (גוגל לא משתמשים בנתונים שלכם לאימון), וגישה למודלים בתשלום.</p>
+        <p><strong>מה מקבלים?</strong> שדרוג מיידי ל-Tier 1, פרטיות מלאה (ההנחיות שלכם לא משמשות לאימון מודלים), מגבלות קצב גבוהות, וגישה למודלים בתשלום. משתמשים חדשים מקבלים גם $300 קרדיט Google Cloud כמתנת הצטרפות!</p>
       </div>
 
       <div class="pricing-note">
