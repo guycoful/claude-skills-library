@@ -172,6 +172,12 @@
       "source": "./plugins/image-generation",
       "description": "Generate images with Gemini (default) or fal.ai FLUX.2 klein 4B (--cheap for fast/low-cost). Generate videos with Grok I",
       "version": "1.0.0"
+    },
+    {
+      "name": "creative-seeds",
+      "source": "./plugins/creative-seeds",
+      "description": "Inject creative absurdity to break AI pattern-thinking before creative tasks. Randomly samples surreal micro-stories to ",
+      "version": "1.0.0"
     }
   ]
 }

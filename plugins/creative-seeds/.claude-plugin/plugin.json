@@ -1,0 +1,13 @@
+{
+  "name": "creative-seeds",
+  "version": "1.0.0",
+  "description": "Inject creative absurdity to break AI pattern-thinking before creative tasks. Randomly samples surreal micro-stories to spark unconventional thinking. Use before brainstorming, naming, writing, or any task needing fresh perspective.",
+  "author": {
+    "name": "aviz",
+    "url": "https://github.com/aviz85"
+  },
+  "homepage": "https://aviz.github.io/claude-skills-library/skills/creative-seeds.html",
+  "repository": "https://github.com/aviz85/claude-skills-library",
+  "license": "MIT",
+  "skills": "./skills/"
+}

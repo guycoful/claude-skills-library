@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Seeds - הזרעים היצירתיים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-primary: #22C55E;
+      --green-glow: rgba(34, 197, 94, 0.4);
+      --green-soft: rgba(34, 197, 94, 0.1);
+      --bg-darkest: #0a0f0d;
+      --bg-dark: #111827;
+      --bg-card: #1a2332;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(34, 197, 94, 0.3);
+      --yellow: #fbbf24;
+      --red: #ef4444;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+      --orange: #f97316;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg-darkest);
+      color: var(--text-primary);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--green-primary); }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .skill-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+    }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--green-soft);
+      border-radius: 100px;
+      color: var(--green-primary);
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2 .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--green-primary);
+      border-radius: 50%;
+      font-size: 1rem;
+    }
+
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--green-primary);
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      background: var(--green-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--green-primary);
+      font-weight: 500;
+    }
+
+    .info {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .info p { margin: 0; color: var(--blue); }
+
+    .purple-info {
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .purple-info p { margin: 0; color: var(--purple); }
+
+    .warning {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .warning-icon { font-size: 1.5rem; }
+    .warning p { margin: 0; color: var(--yellow); }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps-list > li {
+      position: relative;
+      padding: 16px 0;
+      padding-inline-start: 48px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .steps-list > li:last-child { border-bottom: none; }
+
+    .steps-list > li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      inset-inline-start: 0;
+      top: 16px;
+      width: 28px;
+      height: 28px;
+      background: var(--bg-dark);
+      border: 2px solid var(--green-primary);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--green-primary);
+    }
+
+    code {
+      background: var(--bg-dark);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'Menlo', monospace;
+      font-size: 0.9rem;
+      color: var(--green-primary);
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .code-block {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .code-block code {
+      background: none;
+      padding: 0;
+      display: block;
+      white-space: pre;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: #6b7280; }
+    .code-block .key { color: var(--yellow); }
+    .code-block .value { color: var(--green-primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-primary) 0%, #16a34a 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--green-glow);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .feature {
+      background: var(--bg-dark);
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .feature-icon { font-size: 2rem; margin-bottom: 8px; }
+    .feature-title { font-weight: 600; margin-bottom: 4px; }
+    .feature-desc { font-size: 0.85rem; color: var(--text-secondary); }
+
+    .seed-example {
+      background: var(--bg-dark);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .seed-title {
+      font-weight: 700;
+      color: var(--purple);
+      font-style: normal;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+    }
+
+    .trigger-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .trigger-list li {
+      padding: 8px 0;
+      padding-inline-start: 28px;
+      position: relative;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .trigger-list li:last-child { border-bottom: none; }
+
+    .trigger-list li::before {
+      content: '🌱';
+      position: absolute;
+      inset-inline-start: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 48px;
+    }
+
+    footer a {
+      color: var(--green-primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">
+      -> חזרה לדף הראשי
+    </a>
+
+    <div class="hero">
+      <div class="skill-icon">🌱</div>
+      <h1>Creative Seeds</h1>
+      <p class="subtitle">הזרעים היצירתיים — לשבור דפוסי חשיבה לפני כל משימה יצירתית</p>
+      <div class="difficulty">ללא התקנה נדרשת</div>
+    </div>
+
+    <!-- מה הסקיל עושה -->
+    <div class="section">
+      <h2>מה הסקיל הזה עושה?</h2>
+      <p>לפני כל משימה יצירתית, הסקיל מדגם 3 מיני-סיפורים אבסורדיים מתוך אוסף של 50 "זרעים" — קטעי פרוזה מגוחכת-סוריאליסטית — כדי <strong>לשבור את דפוסי ברירת המחדל</strong> של AI ולאלץ חיבורים בלתי צפויים.</p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🧠</div>
+          <div class="feature-title">שבירת דפוסים</div>
+          <div class="feature-desc">מפריע לחשיבה שגרתית לפני יצירה</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎲</div>
+          <div class="feature-title">דגימה אקראית</div>
+          <div class="feature-desc">3 זרעים שונים בכל פעם</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔮</div>
+          <div class="feature-title">פעולה שקטה</div>
+          <div class="feature-desc">עובד מתחת לפני השטח, לא מוסבר למשתמש</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💡</div>
+          <div class="feature-title">רעיונות טריים</div>
+          <div class="feature-desc">תוצאות פחות צפויות ויותר מקוריות</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- מתי להשתמש -->
+    <div class="section">
+      <h2><span class="num">1</span> מתי הסקיל מופעל?</h2>
+
+      <ul class="trigger-list">
+        <li>לפני סיעור מוחות על שמות, רעיונות, סלוגנים</li>
+        <li>לפני כתיבה יצירתית מכל סוג</li>
+        <li>כשהפלט מרגיש גנרי או צפוי מדי</li>
+        <li>כשהמשתמש מבקש רעיונות טריים / בלתי צפויים</li>
+        <li>לפני כל משימה שבה "לחשוב אחרת" חשוב</li>
+      </ul>
+
+      <div class="purple-info">
+        <span class="warning-icon">🔮</span>
+        <p><strong>חשוב:</strong> הזרעים הם לא פרומפטים — הם מפריעים קוגניטיביים. הם עובדים על ידי "זיהום" מנגנון הקישורים של ה-AI עם אבסורד, ומאלצים חיבורים חדשים.</p>
+      </div>
+    </div>
+
+    <!-- דוגמאות לזרעים -->
+    <div class="section">
+      <h2><span class="num">2</span> דוגמאות לזרעים</h2>
+
+      <p>50 קטעי פרוזה סוריאליסטית, כל אחד על נושא אחר. הנה כמה דוגמאות:</p>
+
+      <div class="seed-example">
+        <div class="seed-title">🍋 KUMQUAT</div>
+        The kumquat embassy had been abandoned since the vowels went missing in 1923. Now it served primarily as a storage facility for disappointed Wednesdays and the occasional refugee emotion that had wandered too far from its host...
+      </div>
+
+      <div class="seed-example">
+        <div class="seed-title">🎸 VELCRO</div>
+        Velcro remembered when it was just two strips with a dream. Before the fame. Before the shoes. Before the astronauts started calling at 3 AM asking for emotional support. Now it sat in therapy, trying to explain to a zipper that attachment wasn't the same as love...
+      </div>
+
+      <div class="seed-example">
+        <div class="seed-title">🎸 ACCORDION</div>
+        The accordion accepted that it would never be cool. "I expand and contract with emotion," it told the guitar, who was busy being cool. "That's literally breathing. That's literally life." The guitar strummed dismissively...
+      </div>
+
+      <div class="info">
+        <span class="warning-icon">📚</span>
+        <p>האוסף כולל 50 זרעים על: כלי נגינה, אלמנטים כימיים, מזון, תופעות גיאולוגיות, מתמטיקה, וכל מה שביניהם.</p>
+      </div>
+    </div>
+
+    <!-- איך זה עובד -->
+    <div class="section">
+      <h2><span class="num">3</span> איך זה עובד?</h2>
+
+      <ol class="steps-list">
+        <li>
+          <strong>קורא את קובץ הזרעים</strong>
+          <p>קורא את <code>seeds.md</code> עם 50 הקטעים</p>
+        </li>
+        <li>
+          <strong>בוחר 3 זרעים אקראיים</strong>
+          <p>לפי timestamp mod 50 — שונה בכל שיחה</p>
+        </li>
+        <li>
+          <strong>קורא ומעבד פנימית</strong>
+          <p>לא מסביר למשתמש — פשוט "סופג" את האבסורד</p>
+        </li>
+        <li>
+          <strong>ממשיך במשימה היצירתית</strong>
+          <p>עם "שאריות מנטליות" שמאפשרות חיבורים בלתי צפויים</p>
+        </li>
+      </ol>
+
+      <div class="warning">
+        <span class="warning-icon">⚡</span>
+        <p><strong>עיקרון:</strong> ה-AI לא צריך "להבין" את הזרע — מספיק שהאבסורד מזהם את מרחב ההסתברויות לפני יצירת הטקסט.</p>
+      </div>
+    </div>
+
+    <!-- התקנה -->
+    <div class="section">
+      <h2><span class="num">4</span> התקנה</h2>
+
+      <p>הסקיל לא דורש התקנה מיוחדת. פשוט התקינו אותו דרך המתקין:</p>
+
+      <div class="code-block">
+        <code><span class="comment"># בתוך Claude Code</span>
+/install-skill creative-seeds</code>
+      </div>
+
+      <p>הסקיל יתווסף אוטומטית ויופעל לפני משימות יצירתיות.</p>
+
+      <h3>מבנה הקבצים</h3>
+      <div class="code-block">
+        <code>~/.claude/skills/creative-seeds/
+├── SKILL.md          <span class="comment"># הוראות השימוש</span>
+└── seeds.md          <span class="comment"># 50 הזרעים האבסורדיים</span></code>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="section" style="text-align: center;">
+      <h2>מוכנים לחשוב אחרת?</h2>
+      <p>התקינו את Creative Seeds ותראו איך הרעיונות שלכם הופכים פחות צפויים ויותר מעניינים.</p>
+      <div class="cta-buttons" style="justify-content: center;">
+        <a href="../index.html" class="btn btn-primary">⬇️ להתקנה</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>חלק מ<a href="../index.html">ספריית הסקילים של AVIZ</a> | נבנה עם ❤️ ואבסורד</p>
+    </footer>
+  </div>
+</body>
+</html>
