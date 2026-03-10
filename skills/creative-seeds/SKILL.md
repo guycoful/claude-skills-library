@@ -18,14 +18,6 @@ perl -MList::Util=shuffle -e '@l=<>; print join("\n---\n", (shuffle @l)[0..2])' 
 
 Or read the full seeds file and randomly pick 3 entries.
 
-## When to Invoke
-
-- Before brainstorming names, concepts, taglines
-- Before writing anything creative
-- When output feels generic or predictable
-- When the user asks for fresh / unexpected ideas
-- Before any task where "thinking differently" matters
-
 ## Instructions
 
 1. Read `~/.claude/skills/creative-seeds/seeds.md`
