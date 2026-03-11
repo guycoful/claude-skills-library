@@ -13,7 +13,14 @@ Before any creative task, run the script below — it selects 3 random seeds and
 Run this to pull 3 random seeds:
 
 ```bash
-perl -MList::Util=shuffle -e '@l=<>; print join("\n---\n", (shuffle @l)[0..2])' ~/.claude/skills/creative-seeds/seeds.md 2>/dev/null || shuf -n 3 ~/.claude/skills/creative-seeds/seeds.md
+python3 -c "
+import random, re, os
+with open(os.path.expanduser('~/.claude/skills/creative-seeds/seeds.md')) as f:
+    content = f.read()
+seeds = [s.strip() for s in re.split(r'\n---\n', content) if re.search(r'##\s*\d+\.', s)]
+random.shuffle(seeds)
+print('\n\n---\n\n'.join(seeds[:3]))
+"
 ```
 
 ## Instructions
